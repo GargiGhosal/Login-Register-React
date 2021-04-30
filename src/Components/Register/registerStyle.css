@@ -1,0 +1,258 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.register {
+	font-family: 'Josefin Slab', serif;
+	font-weight: 500;
+	overflow: hidden;
+}
+
+.wave {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	z-index: -1;
+}
+
+.register_container {
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 7rem;
+	padding: 0 2rem;
+}
+
+.register_title {
+	font-family: 'Architects Daughter', cursive;
+	font-weight: bold;
+}
+
+.register_img {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.register-content {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	text-align: center;
+}
+
+.register_img img {
+	width: 500px;
+}
+
+.register_form {
+	width: 360px;
+}
+
+.register-content img {
+	height: 100px;
+}
+
+.register-content .register_title {
+	margin: 15px 0;
+	color: #333;
+	text-transform: uppercase;
+	font-size: 2.9rem;
+}
+
+.register-content .register_inputs {
+	position: relative;
+	display: grid;
+	grid-template-columns: 7% 93%;
+	margin: 25px 0;
+	padding: 5px 0;
+	border-bottom: 2px solid #d9d9d9;
+}
+
+.register-content .register_inputs.one {
+	margin-top: 0;
+}
+
+.register_icon {
+	color: #d9d9d9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.register_icon i {
+	transition: .3s;
+}
+
+.register_inputs>div {
+	position: relative;
+	height: 45px;
+}
+
+.register_inputs>div>.register_subtitle {
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #999;
+	font-size: 18px;
+	transition: .3s;
+}
+
+.register_inputs:before, .register_inputs:after {
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	width: 0%;
+	height: 2px;
+	background-color: #38d39f;
+	transition: .4s;
+}
+
+.register_inputs:before {
+	right: 50%;
+}
+
+.register_inputs:after {
+	left: 50%;
+}
+
+.register_inputs.focus:before, .register_inputs.focus:after {
+	width: 50%;
+}
+
+.register_inputs.focus>div>.register_subtitle {
+	top: -5px;
+	font-size: 15px;
+}
+
+.register_inputs.focus>.register_icon>i {
+	color: #38d39f;
+}
+
+.register_inputs>div>.register_input_field {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+	background: none;
+	padding: 0.5rem 0.7rem;
+	font-size: 1.2rem;
+	color: #555;
+	font-family: 'poppins', sans-serif;
+}
+
+.register_inputs.pass {
+	margin-bottom: 4px;
+}
+
+.forgot_pass {
+	display: block;
+	text-align: right;
+	text-decoration: none;
+	color: #555;
+	font-weight: 600;
+	font-size: 0.9rem;
+	transition: .3s;
+}
+
+.forgot_pass:hover {
+	color: #38d39f;
+}
+
+.submit_btn {
+	display: block;
+	width: 100%;
+	height: 50px;
+	border-radius: 25px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+	background-size: 200%;
+	font-size: 1.2rem;
+	color: #fff;
+	font-family: 'Architects Daughter', cursive;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;
+}
+
+.submit_btn:hover {
+	background-position: right;
+}
+
+.sign_up_page_text {
+	display: block;
+	width: 100%;
+	height: 50px;
+	color: black;
+}
+
+.sign_up_page_link {
+	display: inline-block;
+	text-decoration: none;
+	font-size: 1.2rem;
+	font-weight: bold;
+	border: 2px solid #38d39f;
+	border-radius: 25px;
+	padding: 1rem 2rem;
+	color: #38d39f;
+	transition: 0.5s;
+}
+
+.sign_up_page_link:hover {
+	transform: translateY(-0.25em);
+	color: rgb(52, 52, 241);
+	border-color: rgb(52, 52, 241);
+	text-shadow: 1px 1px 2px;
+	box-shadow: 0 .85rem 1.5rem -0.85rem #38d39f;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 1050px) {
+	.register_container {
+		grid-gap: 5rem;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.register_form {
+		width: 290px;
+	}
+	.register-content .register_title {
+		font-size: 2.4rem;
+		margin: 8px 0;
+	}
+	.register_img img {
+		width: 400px;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.register_container {
+		grid-template-columns: 1fr;
+	}
+	.register_img {
+		display: none;
+	}
+	.wave {
+		display: none;
+	}
+	.register-content {
+		justify-content: center;
+	}
+}
+
+@media screen and (max-width:350px) {
+	.register_form {
+		width: 100%;
+	}
+}
