@@ -6,13 +6,11 @@ export default class register extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
             name: '',
             email: '',
             password: ''
         }
         this.onNameChange = this.onNameChange.bind(this);
-        this.onUserNameChange = this.onUserNameChange.bind(this);
         this.onEmailChange = this.onEmailChange.bind(this);
         this.onPasswordChange = this.onPasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,9 +18,6 @@ export default class register extends Component {
 
     onNameChange = (event) => {
         this.setState({ name: event.target.value });
-    }
-    onUserNameChange = (event) => {
-        this.setState({ username: event.target.value })
     }
 
     onEmailChange = (event) => {
@@ -37,7 +32,6 @@ export default class register extends Component {
         event.preventDefault();
         const reactData = {
             name: this.state.name,
-            username: this.state.username,
             email: this.state.email,
             password: this.state.password,
         }
@@ -101,17 +95,6 @@ export default class register extends Component {
                                     <i className="fas fa-user"></i>
                                 </div>
                                 <div className="div">
-                                    <h5 className="register_subtitle">Username</h5>
-                                    <input type="text" className="register_input_field"
-                                        value={this.state.username} onChange={this.onUserNameChange} />
-                                </div>
-                            </div>
-
-                            <div className="register_inputs one">
-                                <div className="register_icon">
-                                    <i className="fas fa-user"></i>
-                                </div>
-                                <div className="div">
                                     <h5 className="register_subtitle">Email</h5>
                                     <input type="mail" className="register_input_field"
                                         value={this.state.email} onChange={this.onEmailChange} />
@@ -131,8 +114,8 @@ export default class register extends Component {
                             <input type="submit" className="submit_btn" value="Sign Up"
                                 onClick={this.handleSubmit} />
 
-                            <h3 className="sign_up_page_text">Already have an account?</h3>
-                            <a href="/" className="sign_up_page_link">Click Here To Sign In</a>
+                            <h3 className="sign_in_page_text">Already have an account?</h3>
+                            <a href="/" className="sign_in_page_link">Click Here To Sign In</a>
                         </form>
                     </div>
                 </div>

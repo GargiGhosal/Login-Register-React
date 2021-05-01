@@ -7,16 +7,16 @@ export default class login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
+            email: '',
             password: '',
         }
-        this.onUserNameChange = this.onUserNameChange.bind(this);
+        this.onEmailChange = this.onEmailChange.bind(this);
         this.onPasswordChange = this.onPasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    onUserNameChange = (event) => {
-        this.setState({ username: event.target.value })
+    onEmailChange = (event) => {
+        this.setState({ email: event.target.value })
     }
 
     onPasswordChange = (event) => {
@@ -26,10 +26,10 @@ export default class login extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const reactData = {
-            username: this.state.username,
+            email: this.state.email,
             password: this.state.password,
         }
-        axios.post("http://localhost:3000/login", reactData)
+        axios.post("http://localhost:3000/", reactData)
             .then(function (response) {
                 console.log(response);
             })
@@ -79,9 +79,9 @@ export default class login extends Component {
                                     <i className="fas fa-user"></i>
                                 </div>
                                 <div className="div">
-                                    <h5 className="login_subtitle">Username</h5>
-                                    <input type="text" className="login_input_field"
-                                        value={this.state.username} onChange={this.onUserNameChange} />
+                                    <h5 className="login_subtitle">Email</h5>
+                                    <input type="mail" className="login_input_field"
+                                        value={this.state.username} onChange={this.onEmailChange} />
                                 </div>
                             </div>
 

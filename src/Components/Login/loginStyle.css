@@ -5,7 +5,7 @@
 }
 
 .login {
-	font-family: 'Josefin Slab', serif;
+	font-family: "Josefin Sans", sans-serif;
 	font-weight: 500;
 	overflow: hidden;
 }
@@ -146,7 +146,6 @@
 	padding: 0.5rem 0.7rem;
 	font-size: 1.2rem;
 	color: #555;
-	font-family: 'poppins', sans-serif;
 }
 
 .login_inputs.pass {
@@ -158,13 +157,15 @@
 	text-align: right;
 	text-decoration: none;
 	color: #555;
-	font-weight: 600;
-	font-size: 0.9rem;
+	font-size: 1rem;
+	margin-top: 1rem;
 	transition: .3s;
 }
 
 .forgot_pass:hover {
-	color: #38d39f;
+	transform: translateY(-0.25em);
+	text-shadow: 1px 1px 1px;
+	color: #6246ea;
 }
 
 .submit_btn {
@@ -177,10 +178,12 @@
 	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
 	background-size: 200%;
 	font-size: 1.2rem;
+	font-weight: bolder;
+	letter-spacing: 2px;
 	color: #fff;
-	/* font-family: 'Poppins', sans-serif; */
+	font-family: 'Architects Daughter', cursive;
 	text-transform: uppercase;
-	margin: 1rem 0;
+	margin: 1rem 0 2rem 0;
 	cursor: pointer;
 	transition: .5s;
 }
@@ -192,28 +195,31 @@
 .sign_up_page_text {
 	display: block;
 	width: 100%;
-	height: 50px;
+	height: 30px;
 	color: black;
 }
 
 .sign_up_page_link {
+	font-family: 'Architects Daughter', cursive;
 	display: inline-block;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 	text-decoration: none;
 	font-size: 1.2rem;
-	font-weight: bold;
-	border: 2px solid #38d39f;
+	font-weight: bolder;
+	border: 3px solid #040677;
 	border-radius: 25px;
-	padding: 1rem 2rem;
-	color: #38d39f;
-	transition: 0.5s;
+	padding: 0.65rem 1.15rem;
+	color: #040677;
+	transition: 0.3s;
 }
 
 .sign_up_page_link:hover {
 	transform: translateY(-0.25em);
 	color: rgb(52, 52, 241);
 	border-color: rgb(52, 52, 241);
-	text-shadow: 1px 1px 2px;
-	box-shadow: 0 .85rem 1.5rem -0.85rem #38d39f;
+	text-shadow: 1px 1px 1px;
+	box-shadow: 0 .85rem 1.5rem -0.85rem #040677;
 	cursor: pointer;
 }
 
