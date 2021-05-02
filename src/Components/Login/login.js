@@ -48,7 +48,7 @@ export default class login extends Component {
 
         function remcl() {
             let parent = this.parentNode.parentNode;
-            if (this.value == "") {
+            if (this.value === "") {
                 parent.classList.remove("focus");
             }
         }
@@ -63,14 +63,19 @@ export default class login extends Component {
     render() {
         return (
             <div className="login">
-                <img className="wave" src="img/wave.png" />
+                <div className="Navbar_to_home">
+                    <a href="/">
+                        DoctorsVerse
+                    </a>
+                </div>
+                <img className="wave" src="img/wave.png" alt=""/>
                 <div className="login_container">
                     <div className="login_img">
-                        <img src="img/bg.svg" />
+                        <img src="img/bg.svg" alt=""/>
                     </div>
                     <div className="login-content">
                         <form action="index.html" className="login_form">
-                            <img src="img/avatar.svg" />
+                            <img src="img/avatar.svg" alt=""/>
 
                             <h2 className="login_title">Welcome Back</h2>
 

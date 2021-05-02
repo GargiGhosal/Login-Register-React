@@ -1,0 +1,341 @@
+import React, { Component } from 'react';
+import $ from 'jquery';
+import './loaders.css';
+import './homeStyle.css';
+
+
+export default class home extends Component {
+
+    componentDidMount() {
+        // Page loadinmg animation
+
+        if ((".loader").length) {
+            // show Preloader until the website ist loaded
+            $(window).on('load', function () {
+                $(".loader").fadeOut("slow");
+            });
+        }
+
+        /* Onpage linkng smooth effect */
+
+        $('a[href^="#"]').on('click', function (event) {
+            var target = $($(this).attr('href'));
+            if (target.length) {
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 175);
+            }
+
+        });
+
+        // Sticky Header
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 100) {
+                $(".top-nav").addClass("light-header");
+            } else {
+                $(".top-nav").removeClass("light-header");
+            }
+        });
+
+        // Year for copy content
+        $(function () {
+            var theYear = new Date().getFullYear();
+            $('#year').html(theYear);
+        });
+
+    }
+
+    render() {
+        return (
+            <div className="home">
+                <div className="loader loader-bg">
+                    <div className="loader-inner ball-pulse">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+
+                <nav className="navbar navbar-expand-md fixed-top top-nav">
+                    <div className="container-fluid">
+                        <a className="navbar-brand" href="index.html"><strong>DoctorsVerse</strong></a>
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon">
+                                <img src="dots-menu.png" alt="toggle-menu" className="navbar_toggle_img" style={{ width: "30px" }}/>
+                            </span>
+                        </button>
+
+                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul className="navbar-nav ms-auto">
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#home">Home <span className="sr-only">(current)</span></a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#hospital">Hospital</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#department">Department</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#about">About</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#contact">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <ul className="navbar-nav ml-auto search-box">
+                            <li className="nav-item">
+                                <a className="nav-link" href="/login">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <section id="home" className="intro intro-bg bg-overlay parallax">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-6 col-md-12 caption-two-panel">
+                                <div className="intro-caption mt-5">
+                                    <h1 className="text-white mb-2">A Community of Caring</h1>
+                                    <p className="text-white mb-4">Life is hard enough already.
+                                    Let us make it a little easier.<br />
+							        Where life continues and care that never quits.
+						            </p>
+                                    <a href="/login" className="Button-Creation mr-3">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="hospital" className="testimonial-section sec-bg-04">
+                    <div className="container">
+                        <div className="row">
+                            <div className="head-box text-center mb-3 col-md-12 mt-20">
+                                <h2 className="font-abril">Hospitals that you can book from here</h2>
+                            </div>
+                        </div>
+                        <div className="single-testimonial">
+                            <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
+                                <div className="carousel-inner pt-5">
+
+                                    <div className="carousel-item active">
+                                        <div className="testimonial-box text-center">
+                                            <div className="testimonial-content w-100 bg-faded">
+                                                <p className="mb-0">
+                                                    <i className="fa fa-quote-left fa-3x" aria-hidden="true"></i>
+                                                </p>
+                                                <p className="lead font-abril">16 17, JC Block Lane, Central Park Broadway Road,
+                                                Salt Lake stadium gate no. 3, Bidhannagar, Kolkata,
+										        West Bengal 700098</p>
+                                                <div className="testimonial-footer">
+                                                    <h4 className="mt-2 mb-0 hosp_Name">A.M.R.I.</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="carousel-item">
+                                        <div className="testimonial-box text-center">
+                                            <div className="testimonial-content w-100 bg-faded">
+                                                <p className="mb-0"><i className="fa fa-quote-left fa-3x" aria-hidden="true"></i></p>
+                                                <p className="lead font-abril">58, Canal Circular Rd, Kadapara, Kankurgachi, Kolkata,
+                                                West Bengal 700054
+                                                Beside ManiSquare, Kolkata
+									            </p>
+                                                <div className="testimonial-footer">
+                                                    <h4 className="mt-2 mb-0 hosp_Name">Apollo Glenagles</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="carousel-item">
+                                        <div className="testimonial-box text-center">
+                                            <div className="testimonial-content w-100 bg-faded">
+                                                <p className="mb-0"><i className="fa fa-quote-left fa-3x" aria-hidden="true"></i></p>
+                                                <p className="lead font-abril">1, 1, National Library Ave, Alipore, Kolkata, West Bengal
+										        700027, Near Alipore Zoo and National Library</p>
+                                                <div className="testimonial-footer">
+                                                    <h4 className="mt-2 mb-0 hosp_Name">B. M. Birla</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="carousel-item">
+                                        <div className="testimonial-box text-center">
+                                            <div className="testimonial-content w-100 bg-faded">
+                                                <p className="mb-0"><i className="fa fa-quote-left fa-3x" aria-hidden="true"></i></p>
+                                                <p className="lead font-abril">3, 1st Cross Rd, HC Block, Sector III, Bidhannagar,
+										        Kolkata, West Bengal 700106, Opposite of Susrut Eye Hospital</p>
+                                                <div className="testimonial-footer">
+                                                    <h4 className="mt-2 mb-0 hosp_Name">Calcutta Heart Clinic</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="carousel-item">
+                                        <div className="testimonial-box text-center">
+                                            <div className="testimonial-content w-100 bg-faded">
+                                                <p className="mb-0"><i className="fa fa-quote-left fa-3x" aria-hidden="true"></i></p>
+                                                <p className="lead font-abril">Desun More, 720, Eastern Metropolitan Bypass, Golpark,
+										        Sector I, Kasba, Kolkata, West Bengal 700107</p>
+                                                <div className="testimonial-footer">
+                                                    <h4 className="mt-2 mb-0 hosp_Name">Desun Hospital</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="carousel-item">
+                                        <div className="testimonial-box text-center">
+                                            <div className="testimonial-content w-100 bg-faded">
+                                                <p className="mb-0"><i className="fa fa-quote-left fa-3x" aria-hidden="true"></i></p>
+                                                <p className="lead font-abril"> 730, Eastern Metropolitan Bypass, Anandapur, East
+										        Kolkata Twp, Kolkata, West Bengal 700107</p>
+                                                <div className="testimonial-footer">
+                                                    <h4 className="mt-2 mb-0 hosp_Name">Fortis Hospital</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="navigator-box">
+                                    <button className="carousel-control-prev" data-bs-target="#carouselExampleCaptions" type="button"
+                                        data-bs-slide="prev">
+                                        <span className="fas fa-angle-left" aria-hidden="true"></span>
+                                        <span className="visually-hidden">Previous</span>
+                                    </button>
+                                    <button className="carousel-control-next" data-bs-target="#carouselExampleCaptions" type="button"
+                                        data-bs-slide="next">
+                                        <span className="fa fa-angle-right" aria-hidden="true"></span>
+                                        <span className="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="department" className="info-section text-white bg-right bg_dark">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-8">
+                                <div className="head-box">
+                                    <h2 className="font-abril ">Departments</h2>
+                                </div>
+                                <div className="three-panel-block mt-5">
+                                    <div className="row">
+                                        <div className="col-lg-6 col-md-6 col-sm-6">
+                                            <div className="service-block mb-5">
+                                                <i className="icon-box mb-3 float-left w-100">
+                                                    <i className="fas fa-heartbeat"></i>
+                                                </i>
+                                                <h3 className="text_primary">Cardiology</h3>
+                                                <p>Never in all their history have men been able truly to conceive of the world as
+										one a single sphere</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-6 col-md-6 col-sm-6">
+                                            <div className="service-block mb-5">
+                                                <i className="icon-box mb-3 float-left w-100">
+                                                    <i className="fas fa-tooth"></i>
+                                                </i>
+                                                <h3 className="text_primary">Dentist</h3>
+                                                <p>Never in all their history have men been able truly to conceive of the world as
+										one a single sphere</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-6 col-md-6 col-sm-6">
+                                            <div className="service-block mb-5">
+                                                <i className="icon-box mb-3 float-left w-100">
+                                                    <i className="far fa-eye"></i>
+                                                </i>
+                                                <h3 className="text_primary">Eye Specialist</h3>
+                                                <p>Never in all their history have men been able truly to conceive of the world as
+										one a single sphere</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-6 col-md-6 col-sm-6">
+                                            <div className="service-block">
+                                                <i className="icon-box mb-3 float-left w-100">
+                                                    <i className="fas fa-stethoscope"></i>
+                                                </i>
+                                                <h3 className="text_primary">General Consultant</h3>
+                                                <p>Never in all their history have men been able truly to conceive of the world as
+										one a single sphere</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-6 col-md-6 col-sm-6">
+                                            <div className="service-block">
+                                                <i className="icon-box mb-3 float-left w-100">
+                                                    <i className="fas fa-brain"></i>
+                                                </i>
+                                                <h3 className="text_primary">Neurologist</h3>
+                                                <p>Never in all their history have men been able truly to conceive of the world as
+										one a single sphere</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-6 col-md-6 col-sm-6">
+                                            <div className="service-block">
+                                                <i className="icon-box mb-3 float-left w-100">
+                                                    <i className="fas fa-child"></i>
+                                                </i>
+                                                <h3 className="text_primary">Pediatrician</h3>
+                                                <p>Never in all their history have men been able truly to conceive of the world as
+										one a single sphere</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section id="contact" className="contact-section sec-bg-05">
+                    <div className="footer">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-1"></div>
+                                <div className="title col-md-5 col-sm-12" id="about">
+                                    <h2 className="content-design">About Us</h2>
+                                    <br />
+                                    <p>
+                                        Smart Eye is a leading provider of information technology, consulting, and business
+                                        process
+                                        services. Our dedicated employees offer strategic insights, technological expertise and
+                                        industry
+                                        experience.
+						            </p>
+                                    <p>We focus on technologies that promise to reduce costs, streamline processes and speed
+                                    time-to-market, Backed by our strong quality processes and rich experience managing
+                                    global...
+						            </p>
+                                </div>
+                                <div className="col-md-1"></div>
+                                <div className="col-md-5 col-sm-12 map-img" id="contact">
+                                    <h2 className="content-design">Contact Us</h2>
+                                    <br />
+                                    <address className="md-margin-bottom-40">
+                                        Jadavpur University <br />
+                                        Salt Lake Campus, Kolkata - 700106 <br />
+                                        West Bengal, India <br />
+                                        Phone: +91 834 698 3581 <br />
+                                        Email: <a href="mailto:agnisaha337599@gmail.com" className="">agnisaha337599@gmail.com</a><br />
+                                    </address>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        )
+    }
+}

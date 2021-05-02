@@ -8,6 +8,32 @@
 	font-family: "Josefin Sans", sans-serif;
 	font-weight: 500;
 	overflow: hidden;
+	height: 100vh;
+}
+
+.Navbar_to_home {
+	margin-left: 2rem;
+	padding-top: 0.5rem;
+	font-family: 'Architects Daughter', cursive;
+	font-weight: bolder;
+}
+
+.Navbar_to_home a {
+	font-size: 1.75rem;
+	letter-spacing: 2px;
+	padding: 0.25rem;
+	color: #ef233c;
+	text-decoration: none;
+	transition: 0.3s;
+	background-color: #eaf8ea;
+	border-radius: 15px;
+}
+
+.Navbar_to_home a:hover {
+	color: #ff8906;
+	cursor: pointer;
+	box-shadow: 0 2px 7px #ef233c;
+	text-shadow: 1px 1px 1px #ef233c;
 }
 
 .wave {
@@ -163,6 +189,7 @@
 }
 
 .forgot_pass:hover {
+	text-decoration: none;
 	transform: translateY(-0.25em);
 	text-shadow: 1px 1px 1px;
 	color: #6246ea;
@@ -175,7 +202,7 @@
 	border-radius: 25px;
 	outline: none;
 	border: none;
-	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+	background-image: linear-gradient(to right, #32be8f, #3fecb3, #32be8f);
 	background-size: 200%;
 	font-size: 1.2rem;
 	font-weight: bolder;
@@ -183,7 +210,7 @@
 	color: #fff;
 	font-family: 'Architects Daughter', cursive;
 	text-transform: uppercase;
-	margin: 1rem 0 2rem 0;
+	margin: 0.5rem 0 2rem 0;
 	cursor: pointer;
 	transition: .5s;
 }
@@ -200,6 +227,7 @@
 }
 
 .sign_up_page_link {
+	margin-top: 0.5rem;
 	font-family: 'Architects Daughter', cursive;
 	display: inline-block;
 	text-transform: uppercase;
@@ -207,6 +235,7 @@
 	text-decoration: none;
 	font-size: 1.2rem;
 	font-weight: bolder;
+	text-shadow: 1px 1px 0px;
 	border: 3px solid #040677;
 	border-radius: 25px;
 	padding: 0.65rem 1.15rem;
@@ -215,11 +244,13 @@
 }
 
 .sign_up_page_link:hover {
+	text-decoration: none;
 	transform: translateY(-0.25em);
-	color: rgb(52, 52, 241);
-	border-color: rgb(52, 52, 241);
+	color: white;
+	background-color: #3da9fc;
+	border-color: #0077b6;
 	text-shadow: 1px 1px 1px;
-	box-shadow: 0 .85rem 1.5rem -0.85rem #040677;
+	box-shadow: 0 .85rem 1.5rem -0.85rem #0077b6;
 	cursor: pointer;
 }
 
@@ -239,6 +270,9 @@
 	}
 	.login_img img {
 		width: 400px;
+	}
+	.sign_up_page_link {
+		margin-top: 2rem;
 	}
 }
 
