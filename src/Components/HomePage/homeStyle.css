@@ -475,9 +475,10 @@ a.text_primary:hover {
     width: 43%;
 }
 
-.testimonial-section .single-testimonial .carousel-control-next:hover, .testimonial-section .single-testimonial .carousel-control-prev:hover {
-    background-color: #b47f41;
-    border-color: #b47f41;
+.testimonial-section .single-testimonial .carousel-control-next:hover,
+ .testimonial-section .single-testimonial .carousel-control-prev:hover {
+    background-color: #dd7702;
+    border-color: #dd7702;
     color: #fff;
 }
 
@@ -614,6 +615,10 @@ a.text_primary:hover {
     .top-nav .navbar-nav li .nav-link {
         font-size: 0.85rem;
         padding: 6px 10px;
+        margin-bottom: 5px;
+    }
+    .navbar-nav {
+        margin-bottom: 10px;
     }
 }
 
@@ -636,7 +641,6 @@ a.text_primary:hover {
     }
     #navbarSupportedContent {
         background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0!important;
-        padding: 30px 0
     }
     #navbarSupportedContent li {
         text-align: center;

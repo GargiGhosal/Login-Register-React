@@ -7,8 +7,8 @@ import './homeStyle.css';
 export default class home extends Component {
 
     componentDidMount() {
-        // Page loadinmg animation
 
+        // Page loadinmg animation
         if ((".loader").length) {
             // show Preloader until the website ist loaded
             $(window).on('load', function () {
@@ -17,14 +17,13 @@ export default class home extends Component {
         }
 
         /* Onpage linkng smooth effect */
-
         $('a[href^="#"]').on('click', function (event) {
             var target = $($(this).attr('href'));
             if (target.length) {
                 event.preventDefault();
                 $('html, body').animate({
                     scrollTop: target.offset().top
-                }, 175);
+                }, 269);
             }
 
         });
@@ -40,10 +39,17 @@ export default class home extends Component {
             }
         });
 
-        // Year for copy content
-        $(function () {
-            var theYear = new Date().getFullYear();
-            $('#year').html(theYear);
+        //closing navbar on clicking outside it while in closed form
+        $(document).ready(function () {
+            $(document).click(
+                function (event) {
+                    var target = $(event.target);
+                    var MenuOpen = $(".navbar-collapse").hasClass("show");
+                    if (MenuOpen === true && !target.hasClass("navbar-toggler")) {
+                        $("button.navbar-toggler").click();
+                    }
+                }
+            );
         });
 
     }
@@ -66,7 +72,7 @@ export default class home extends Component {
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                             aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon">
-                                <img src="dots-menu.png" alt="toggle-menu" className="navbar_toggle_img" style={{ width: "30px" }}/>
+                                <img src="dots-menu.png" alt="toggle-menu" className="navbar_toggle_img" style={{ width: "30px" }} />
                             </span>
                         </button>
 
