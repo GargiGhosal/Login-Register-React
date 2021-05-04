@@ -7,7 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './Components/Login/login';
 import Register from './Components/Register/register';
 import Home from './Components/HomePage/home';
-import BokkingPage from './Components/BookingFolder/BokkingPage';
+import BokkingPage from './Components/BookingFolder/Banner/Banner';
+import AmriDeptList from './Components/BookingFolder/DeptList/AmriDeptList';
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/banner" component={BokkingPage} />
+            <Route exact path="/AmriDeptList" component={AmriDeptList} />
           </Switch>
         </div>
       </Router>

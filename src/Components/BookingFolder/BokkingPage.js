@@ -8,8 +8,10 @@ export default class BokkingPage extends Component {
     render() {
         return (
             <Router>
-                <Banner />
-                <Route path="/AmriDeptList" component={AmriDeptList} />
+                <Switch>
+                    <Route path ="/Banner" component={Banner} />
+                    <Route path="/AmriDeptList" component={AmriDeptList} />
+                </Switch>
             </Router>
         )
     }

@@ -10,11 +10,12 @@
     background: #efefef;
     scroll-behavior: smooth;
     width: 100%;
+    min-height: 100vh;
 }
 
 .header {
     width: 960px;
-    margin: 0.5em auto 1em auto;
+    margin: 0 auto 1rem auto;
     text-align: center;
     border-bottom: 2px solid rgba(29, 29, 29, 0.6);
     padding: 1em;
@@ -44,6 +45,7 @@
 
 .Dept_heading {
     margin-bottom: 1em;
+    letter-spacing: 1px;
 }
 
 .Dept_heading h1 {
@@ -72,7 +74,7 @@
 
 section.section-2 {
     text-align: center;
-    padding: 1.5em 1em;
+    padding: 1.5em 1em 1.4em 1em; 
     background: #1d1d1d;
     color: #efefef;
 }

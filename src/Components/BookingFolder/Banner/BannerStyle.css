@@ -87,6 +87,7 @@
     border: 0;
     padding: 4px 8px;
     width: calc(100% - 100px);
+    border-radius: 50px;
 }
 
 #footer .footer-top .footer-newsletter datalist option {
@@ -140,10 +141,18 @@ a {
     justify-content: space-between;
 }
 
-.logo_title {
+.header_logo a {
+    font-size: 25px;
+    letter-spacing: 2px;
+    font-family: 'Abril Fatface', cursive;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.header_logo a:hover {
+    color: #ff8906;
+    text-decoration: none;
 }
 
 .header_dropdown {

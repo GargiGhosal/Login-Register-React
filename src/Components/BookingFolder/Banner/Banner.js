@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './BannerStyle.css';
 import $ from 'jquery';
+import axios from 'axios';
 
 export default class Banner extends Component {
     constructor(props) {
@@ -20,7 +21,6 @@ export default class Banner extends Component {
 
     onChange = e => {
         // localStorage.setItem("hospName", e.target.value);
-
         let TargetValue = e.target.value;
         if (TargetValue.trim().indexOf(' ') !== -1) {
 
@@ -29,6 +29,19 @@ export default class Banner extends Component {
         }
         let valueSelectedByUser = "/" + TargetValue + "DeptList";
         this.setState({ hospital: valueSelectedByUser });
+    }
+
+    hospSubmit = (event) => {
+        const hospData = {
+            hospName: this.state.hospital
+        }
+        axios.get("http://localhost:3000/banner", hospData)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
     }
 
     componentDidMount() {
@@ -53,8 +66,8 @@ export default class Banner extends Component {
                             <div className="nav_container">
                                 <div className="header-content">
                                     <div className="header_logo">
-                                        <a href="#">
-                                            <img src="Doctorsverse-logo-white.png" alt="" width="120" />
+                                        <a href="/">
+                                            HOME
                                         </a>
                                     </div>
 
@@ -119,7 +132,7 @@ export default class Banner extends Component {
 
                             <div className="row footer-newsletter justify-content-center">
                                 <div className="col-lg-6">
-                                    <form action="" method="post">
+                                    <form action={this.state.hospital}>
                                         <input list="HospitalName"
                                             className="mdb-select md-form form-control"
                                             type="text"
@@ -133,11 +146,10 @@ export default class Banner extends Component {
                                             <option value="Desun" />
                                             <option value="Fortis" />
                                         </datalist>
-                                        <Link to={this.state.hospital}
-                                            style={{ textDecoration: 'none', color: 'black' }} >
+                                        <a href={this.state.hospital}>
                                             <input type="submit" value="Select"
-                                                onClick={this.WinScroll} />
-                                        </Link>
+                                                onClick={this.hospSubmit} />
+                                        </a>
                                     </form>
                                 </div>
                             </div>

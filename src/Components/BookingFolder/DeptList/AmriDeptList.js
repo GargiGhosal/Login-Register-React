@@ -12,7 +12,7 @@ export default class AmriDeptList extends Component {
 
                 <section className="section-2">
                     <div className="Dept_heading">
-                        <h1>Image Card Hover Effect #02</h1>
+                        <h1>AMRI Hospital</h1>
                     </div>
                     <figure className="Dept_figure">
                         <img src="./departments-1.jpg" />
@@ -50,6 +50,14 @@ export default class AmriDeptList extends Component {
                         <img src="./departments-5.jpg" />
                         <figcaption>
                             <h3 className="Dept_title">Pediatrician</h3>
+                            <h3 className="Dept_hover">Select</h3>
+                        </figcaption>
+                        <a href="#"></a>
+                    </figure>
+                    <figure className="Dept_figure">
+                        <img src="./departments-5.jpg" />
+                        <figcaption>
+                            <h3 className="Dept_title">Oncologist</h3>
                             <h3 className="Dept_hover">Select</h3>
                         </figcaption>
                         <a href="#"></a>

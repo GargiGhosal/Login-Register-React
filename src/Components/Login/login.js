@@ -100,7 +100,7 @@ export default class login extends Component {
                                 </div>
                             </div>
                             <a href="#" className="forgot_pass">Forgot Password?</a>
-                            <a className="Submit_link">
+                            <a href="/banner" className="Submit_link">
                                 <input type="submit" className="submit_btn" value="Login"
                                     onClick={this.handleSubmit} />
                             </a>
