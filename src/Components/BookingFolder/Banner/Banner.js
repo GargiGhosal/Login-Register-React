@@ -8,6 +8,8 @@ export default class Banner extends Component {
     constructor(props) {
         super(props);
         this.state = { hospital: "" };
+        this.onChange = this.onChange.bind(this);
+        this.hospSubmit = this.hospSubmit.bind(this);
     }
 
     WinScroll() {
@@ -32,16 +34,18 @@ export default class Banner extends Component {
     }
 
     hospSubmit = (event) => {
+        event.preventDefault();
         const hospData = {
             hospName: this.state.hospital
         }
-        axios.get("http://localhost:3000/banner", hospData)
+        axios.post("/t/n80zx-1620142118/post", hospData)
             .then(function (response) {
                 console.log(response);
             })
             .catch(function (error) {
-                console.log(error);
+                console.log("problem occured", error);
             })
+        window.location.href = this.state.hospital;
     }
 
     componentDidMount() {

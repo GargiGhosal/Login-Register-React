@@ -24,17 +24,19 @@ export default class login extends Component {
     }
 
     handleSubmit = (event) => {
+        event.preventDefault();
         const reactData = {
             email: this.state.email,
             password: this.state.password,
         }
-        axios.post("http://localhost:3000/", reactData)
+        axios.post("/t/n80zx-1620142118/post", reactData)
             .then(function (response) {
                 console.log(response);
             })
             .catch(function (error) {
                 console.log(error);
             })
+        window.location.href = "/banner";
     }
 
     componentDidMount() {
@@ -73,7 +75,7 @@ export default class login extends Component {
                         <img src="img/bg.svg" alt="" />
                     </div>
                     <div className="login-content">
-                        <form action="/banner" className="login_form">
+                        <form action="/banner" className="login_form" method="post">
                             <img src="img/avatar.svg" alt="" />
 
                             <h2 className="login_title">Welcome Back</h2>
@@ -99,7 +101,7 @@ export default class login extends Component {
                                         value={this.state.password} onChange={this.onPasswordChange} />
                                 </div>
                             </div>
-                            <a href="#" className="forgot_pass">Forgot Password?</a>
+                            <a href="/" className="forgot_pass">Forgot Password?</a>
                             <a href="/banner" className="Submit_link">
                                 <input type="submit" className="submit_btn" value="Login"
                                     onClick={this.handleSubmit} />

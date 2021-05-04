@@ -29,6 +29,7 @@ export default class register extends Component {
     }
 
     handleSubmit = (event) => {
+        event.preventDefault();
         const reactData = {
             name: this.state.name,
             email: this.state.email,
@@ -41,6 +42,7 @@ export default class register extends Component {
             .catch(function (error) {
                 console.log(error);
             })
+        window.location.href = "/banner";
     }
 
     componentDidMount() {
