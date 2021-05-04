@@ -31,8 +31,13 @@ export default class login extends Component {
             password: this.state.password,
         }
 
-        if (reactData.email === "" || reactData.password === "")
+        if (reactData.email === "" || reactData.password === "") {
+            this.setState({
+                email: '',
+                password: '',
+            })
             ErrorText.innerText = "Fill out correctly!!!!!"
+        }
         else {
             axios.post("http://localhost:3000/login", reactData)
                 .then(function (response) {
@@ -105,7 +110,7 @@ export default class login extends Component {
                                 <div className="div">
                                     <h5 className="login_subtitle">Email</h5>
                                     <input type="mail" className="login_input_field"
-                                        value={this.state.username} onChange={this.onEmailChange}
+                                        value={this.state.email} onChange={this.onEmailChange}
                                         required />
                                 </div>
                             </div>

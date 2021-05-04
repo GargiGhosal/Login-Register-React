@@ -37,8 +37,14 @@ export default class register extends Component {
             password: this.state.password,
         }
 
-        if (reactData.email === "" || reactData.password === "")
-            ErrorText.innerText = "Fill out correctly!!!!!"
+        if (reactData.name === "" || reactData.email === "" || reactData.password === "") {
+            this.setState({
+                name: "",
+                email: "",
+                password: ""
+            })
+            ErrorText.innerText = "Fill out correctly!!!!!";
+        }
         else {
             axios.post("http://localhost:3000/register", reactData)
                 .then(function (response) {
