@@ -24,7 +24,6 @@ export default class login extends Component {
     }
 
     handleSubmit = (event) => {
-        event.preventDefault();
         const reactData = {
             email: this.state.email,
             password: this.state.password,
@@ -68,14 +67,14 @@ export default class login extends Component {
                         DoctorsVerse
                     </a>
                 </div>
-                <img className="wave" src="img/wave.png" alt=""/>
+                <img className="wave" src="img/wave.png" alt="" />
                 <div className="login_container">
                     <div className="login_img">
-                        <img src="img/bg.svg" alt=""/>
+                        <img src="img/bg.svg" alt="" />
                     </div>
                     <div className="login-content">
-                        <form action="index.html" className="login_form">
-                            <img src="img/avatar.svg" alt=""/>
+                        <form action="/banner" className="login_form">
+                            <img src="img/avatar.svg" alt="" />
 
                             <h2 className="login_title">Welcome Back</h2>
 
@@ -101,8 +100,10 @@ export default class login extends Component {
                                 </div>
                             </div>
                             <a href="#" className="forgot_pass">Forgot Password?</a>
-                            <input type="submit" className="submit_btn" value="Login"
-                                onClick={this.handleSubmit} />
+                            <a className="Submit_link">
+                                <input type="submit" className="submit_btn" value="Login"
+                                    onClick={this.handleSubmit} />
+                            </a>
 
                             <h3 className="sign_up_page_text">Don't have an account?</h3>
                             <a href="/register" className="sign_up_page_link">Click Here To Sign Up</a>

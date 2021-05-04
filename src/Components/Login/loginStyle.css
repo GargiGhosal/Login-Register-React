@@ -195,6 +195,14 @@
 	color: #6246ea;
 }
 
+.Submit_link {
+	text-decoration: none;
+}
+
+.Submit_link:hover {
+	text-decoration: none;
+}
+
 .submit_btn {
 	display: block;
 	width: 100%;

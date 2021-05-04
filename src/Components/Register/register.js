@@ -29,7 +29,6 @@ export default class register extends Component {
     }
 
     handleSubmit = (event) => {
-        event.preventDefault();
         const reactData = {
             name: this.state.name,
             email: this.state.email,
@@ -79,7 +78,7 @@ export default class register extends Component {
                         <img src="img/clip-1642.png" alt="" />
                     </div>
                     <div className="register-content">
-                        <form action="index.html" className="register_form">
+                        <form action="/banner/" className="register_form">
                             <img src="img/avatar.svg" alt="" />
 
                             <h2 className="register_title">Welcome</h2>
@@ -116,9 +115,10 @@ export default class register extends Component {
                                         value={this.state.password} onChange={this.onPasswordChange} />
                                 </div>
                             </div>
-                            <input type="submit" className="submit_btn" value="Sign Up"
-                                onClick={this.handleSubmit} />
-
+                            <a href="/banner" className="Submit_link">
+                                <input type="submit" className="submit_btn" value="Sign Up"
+                                    onClick={this.handleSubmit} />
+                            </a>
                             <h3 className="sign_in_page_text">Already have an account?</h3>
                             <a href="/login" className="sign_in_page_link">Click Here To Sign In</a>
                         </form>

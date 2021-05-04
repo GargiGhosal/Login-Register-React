@@ -176,6 +176,14 @@
 	margin-bottom: 4px;
 }
 
+.Submit_link {
+	text-decoration: none;
+}
+
+.Submit_link:hover {
+	text-decoration: none;
+}
+
 .submit_btn {
 	display: block;
 	width: 100%;
