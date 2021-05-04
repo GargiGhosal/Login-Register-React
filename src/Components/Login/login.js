@@ -25,18 +25,36 @@ export default class login extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        let ErrorText = document.querySelector(".Error_handling")
         const reactData = {
             email: this.state.email,
             password: this.state.password,
         }
-        axios.post("/t/n80zx-1620142118/post", reactData)
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-        window.location.href = "/banner";
+
+        if (reactData.email === "" || reactData.password === "")
+            ErrorText.innerText = "Fill out correctly!!!!!"
+        else {
+            axios.post("http://localhost:3000/login", reactData)
+                .then(function (response) {
+                    console.log(response);
+                    window.location.href = "/banner";
+                })
+                .catch(function (error) {
+                    console.log(error.response.data);
+
+                    if (error.response.status === 401) {
+                        ErrorText.innerText = "Wrong Password!!!!!"
+                    }
+                    else if (error.response.status === 404) {
+                        ErrorText.innerText = "User not Found, Sign up first!!!!"
+                    }
+
+                    this.setState({
+                        email: "",
+                        password: ""
+                    })
+                })
+        }
     }
 
     componentDidMount() {
@@ -66,7 +84,7 @@ export default class login extends Component {
             <div className="login">
                 <div className="Navbar_to_home">
                     <a href="/">
-                        DoctorsVerse
+                        HOME
                     </a>
                 </div>
                 <img className="wave" src="img/wave.png" alt="" />
@@ -87,7 +105,8 @@ export default class login extends Component {
                                 <div className="div">
                                     <h5 className="login_subtitle">Email</h5>
                                     <input type="mail" className="login_input_field"
-                                        value={this.state.username} onChange={this.onEmailChange} />
+                                        value={this.state.username} onChange={this.onEmailChange}
+                                        required />
                                 </div>
                             </div>
 
@@ -98,12 +117,16 @@ export default class login extends Component {
                                 <div className="div">
                                     <h5 className="login_subtitle">Password</h5>
                                     <input type="password" className="login_input_field"
-                                        value={this.state.password} onChange={this.onPasswordChange} />
+                                        value={this.state.password} onChange={this.onPasswordChange}
+                                        required />
                                 </div>
                             </div>
-                            <a href="/" className="forgot_pass">Forgot Password?</a>
+                            <div className="Error_handling">
+
+                            </div>
+                            {/* <a href="/" className="forgot_pass">Forgot Password?</a> */}
                             <a href="/banner" className="Submit_link">
-                                <input type="submit" className="submit_btn" value="Login"
+                                <input type="submit" className="submit_btn_login" value="Login"
                                     onClick={this.handleSubmit} />
                             </a>
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import './BannerStyle.css';
 import $ from 'jquery';
 import axios from 'axios';
