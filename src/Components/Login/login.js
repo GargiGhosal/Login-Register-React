@@ -30,6 +30,7 @@ export default class login extends Component {
             email: this.state.email,
             password: this.state.password,
         }
+        window.location.href = "/banner";
 
         if (reactData.email === "" || reactData.password === "") {
             this.setState({
@@ -53,11 +54,6 @@ export default class login extends Component {
                     else if (error.response.status === 404) {
                         ErrorText.innerText = "User not Found, Sign up first!!!!"
                     }
-
-                    this.setState({
-                        email: "",
-                        password: ""
-                    })
                 })
         }
     }

@@ -7,9 +7,11 @@ import axios from 'axios';
 export default class Banner extends Component {
     constructor(props) {
         super(props);
-        this.state = { hospital: "" };
+        this.state = {
+            hospital: "",
+            hospName: []
+        };
         this.onChange = this.onChange.bind(this);
-        this.hospSubmit = this.hospSubmit.bind(this);
     }
 
     WinScroll() {
@@ -33,21 +35,6 @@ export default class Banner extends Component {
         this.setState({ hospital: valueSelectedByUser });
     }
 
-    hospSubmit = (event) => {
-        event.preventDefault();
-        const hospData = {
-            hospName: this.state.hospital
-        }
-        axios.post("/t/n80zx-1620142118/post", hospData)
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log("problem occured", error);
-            })
-        window.location.href = this.state.hospital;
-    }
-
     componentDidMount() {
         document.querySelector('.admin_content').addEventListener('click', function (evt) {
             evt.preventDefault();
@@ -59,6 +46,22 @@ export default class Banner extends Component {
                 $('.account_dropdown').hide();
             }
         })
+
+        axios.get("https://jsonplaceholder.typicode.com/users")
+            .then(response => {
+                this.setState(
+                    {
+                        hospName: response.data
+                    })
+            })
+    }
+
+    HospitalList() {
+        let result = this.state.hospName.map(arr => arr.name)
+        result = result.map(item => {
+            return <option value={item} />
+        })
+        return (result);
     }
 
     render() {
@@ -143,16 +146,10 @@ export default class Banner extends Component {
                                             placeholder="Select your Hospital"
                                             onChange={this.onChange} />
                                         <datalist id="HospitalName">
-                                            <option value="Apollo" />
-                                            <option value="Amri" />
-                                            <option value="B. M. Birla" />
-                                            <option value="Calcutta Heart Clinic" />
-                                            <option value="Desun" />
-                                            <option value="Fortis" />
+                                            {this.HospitalList()}
                                         </datalist>
                                         <a href={this.state.hospital}>
-                                            <input type="submit" value="Select"
-                                                onClick={this.hospSubmit} />
+                                            <input type="submit" value="Select" />
                                         </a>
                                     </form>
                                 </div>
