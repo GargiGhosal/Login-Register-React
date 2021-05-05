@@ -57,7 +57,7 @@ export default class Banner extends Component {
     }
 
     HospitalList() {
-        let result = this.state.hospName.map(arr => arr.name)
+        let result = this.state.hospName.map(arr => arr.hospital_name)
         result = result.map(item => {
             return <option value={item} />
         })
@@ -146,7 +146,7 @@ export default class Banner extends Component {
                                             placeholder="Select your Hospital"
                                             onChange={this.onChange} />
                                         <datalist id="HospitalName">
-                                            {this.HospitalList()}
+                                            {this.HospitalList( )}
                                         </datalist>
                                         <a href={this.state.hospital}>
                                             <input type="submit" value="Select" />

@@ -30,7 +30,7 @@ export default class login extends Component {
             email: this.state.email,
             password: this.state.password,
         }
-        window.location.href = "/banner";
+        // window.location.href = "/banner";
 
         if (reactData.email === "" || reactData.password === "") {
             this.setState({
