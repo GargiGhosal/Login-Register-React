@@ -35,7 +35,7 @@ export default class DeptList extends Component {
         let deptList = [];
         let a = this.state.DeptResponse;
 
-        this.state.DeptResponse.doctors.forEach(e => e.department.map(
+        a.doctors.forEach(e => e.department.map(
             e => deptList.push(e.specialization_name)
         ))
         let uniqueDepertments = deptList.filter((v, i, a) => a.indexOf(v) === i);
