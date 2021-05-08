@@ -14,25 +14,30 @@ export default class Banner extends Component {
         this.onChange = this.onChange.bind(this);
     }
 
-    WinScroll() {
-        const sleep = ms => new Promise(res => setTimeout(res, ms));
+    // WinScroll() {
+    //     const sleep = ms => new Promise(res => setTimeout(res, ms));
 
-        (async () => {
-            await sleep(200);
-            window.scrollTo(0, 800);
-        })();
-    }
+    //     (async () => {
+    //         await sleep(200);
+    //         window.scrollTo(0, 800);
+    //     })();
+    // }
 
     onChange = e => {
         // localStorage.setItem("hospName", e.target.value);
-        let TargetValue = e.target.value;
-        if (TargetValue.trim().indexOf(' ') !== -1) {
-
-            let matches = TargetValue.match(/\b(\w)/g);
-            TargetValue = matches.join('').toUpperCase();
-        }
-        let valueSelectedByUser = "/" + TargetValue + "DeptList";
+        let valueSelectedByUser = e.target.value;
+        // let valueSelectedByUser = "/" + TargetValue + "DeptList";
         this.setState({ hospital: valueSelectedByUser });
+    }
+
+    onSubmit = () => {
+        let result = this.state.hospName.map(arr => arr.hospital_name);
+        let hospID = 0;
+        for( let i=0; i<result.length; i++ ){
+            if( result[i] === this.state.hospital )
+                hospID = i
+        }
+        localStorage.setItem("hospID", this.state.hospName[hospID].id);
     }
 
     componentDidMount() {
@@ -149,7 +154,8 @@ export default class Banner extends Component {
                                             {this.HospitalList( )}
                                         </datalist>
                                         <a href={this.state.hospital}>
-                                            <input type="submit" value="Select" />
+                                            <input type="submit" value="Select" 
+                                             onSubmit={this.onSubmit}/>
                                         </a>
                                     </form>
                                 </div>

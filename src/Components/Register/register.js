@@ -49,11 +49,13 @@ export default class register extends Component {
             axios.post("http://localhost:3000/register", reactData)
                 .then(function (response) {
                     console.log(response);
+                    window.location.href = "/banner";
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    if( error.response.status === 409 ){
+                        ErrorText.innerText = "User Already Registered"
+                    }
                 })
-            window.location.href = "/banner";
         }
     }
 

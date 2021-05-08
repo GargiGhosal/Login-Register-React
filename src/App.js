@@ -8,7 +8,7 @@ import Login from './Components/Login/login';
 import Register from './Components/Register/register';
 import Home from './Components/HomePage/home';
 import BokkingPage from './Components/BookingFolder/Banner/Banner';
-import AmriDeptList from './Components/BookingFolder/DeptList/AmriDeptList';
+import DeptList from './Components/BookingFolder/DeptList/DeptList';
 
 class App extends Component {
   render() {
@@ -20,7 +20,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/banner" component={BokkingPage} />
-            <Route exact path="/AmriDeptList" component={AmriDeptList} />
+            <Route exact path="/DeptList" component={DeptList} />
           </Switch>
         </div>
       </Router>

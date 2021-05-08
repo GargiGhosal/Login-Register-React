@@ -129,13 +129,13 @@ export default class home extends Component {
                         </div>
                         <div className="single-testimonial">
                             <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
-                                <div className="carousel-inner pt-5">
+                                <div className="carousel-inner pt-3">
 
                                     <div className="carousel-item active">
                                         <div className="testimonial-box text-center">
                                             <div className="testimonial-content w-100 bg-faded">
-                                                <p className="mb-0">
-                                                    <i className="fa fa-quote-left fa-3x" aria-hidden="true"></i>
+                                                <p className="mb-3">
+                                                    <i className="fas fa-map-marker-alt fa-3x" aria-hidden="true"></i>
                                                 </p>
                                                 <p className="lead font-abril">16 17, JC Block Lane, Central Park Broadway Road,
                                                 Salt Lake stadium gate no. 3, Bidhannagar, Kolkata,
@@ -149,9 +149,11 @@ export default class home extends Component {
                                     <div className="carousel-item">
                                         <div className="testimonial-box text-center">
                                             <div className="testimonial-content w-100 bg-faded">
-                                                <p className="mb-0"><i className="fa fa-quote-left fa-3x" aria-hidden="true"></i></p>
-                                                <p className="lead font-abril">58, Canal Circular Rd, Kadapara, Kankurgachi, Kolkata,
-                                                West Bengal 700054
+                                                <p className="mb-3">
+                                                    <i className="fas fa-map-marker-alt fa-3x" aria-hidden="true"></i>
+                                                </p>
+                                                <p className="lead font-abril">58, Canal Circular Rd, Kadapara, Kankurgachi,
+                                                Kolkata, West Bengal 700054
                                                 Beside ManiSquare, Kolkata
 									            </p>
                                                 <div className="testimonial-footer">
@@ -163,9 +165,11 @@ export default class home extends Component {
                                     <div className="carousel-item">
                                         <div className="testimonial-box text-center">
                                             <div className="testimonial-content w-100 bg-faded">
-                                                <p className="mb-0"><i className="fa fa-quote-left fa-3x" aria-hidden="true"></i></p>
+                                                <p className="mb-3">
+                                                    <i className="fas fa-map-marker-alt fa-3x" aria-hidden="true"></i>
+                                                </p>
                                                 <p className="lead font-abril">1, 1, National Library Ave, Alipore, Kolkata, West Bengal
-										        700027, Near Alipore Zoo and National Library</p>
+										        700027,<br /> Near Alipore Zoo and National Library</p>
                                                 <div className="testimonial-footer">
                                                     <h4 className="mt-2 mb-0 hosp_Name">B. M. Birla</h4>
                                                 </div>
@@ -175,7 +179,9 @@ export default class home extends Component {
                                     <div className="carousel-item">
                                         <div className="testimonial-box text-center">
                                             <div className="testimonial-content w-100 bg-faded">
-                                                <p className="mb-0"><i className="fa fa-quote-left fa-3x" aria-hidden="true"></i></p>
+                                                <p className="mb-3">
+                                                    <i className="fas fa-map-marker-alt fa-3x" aria-hidden="true"></i>
+                                                </p>
                                                 <p className="lead font-abril">3, 1st Cross Rd, HC Block, Sector III, Bidhannagar,
 										        Kolkata, West Bengal 700106, Opposite of Susrut Eye Hospital</p>
                                                 <div className="testimonial-footer">
@@ -187,9 +193,11 @@ export default class home extends Component {
                                     <div className="carousel-item">
                                         <div className="testimonial-box text-center">
                                             <div className="testimonial-content w-100 bg-faded">
-                                                <p className="mb-0"><i className="fa fa-quote-left fa-3x" aria-hidden="true"></i></p>
+                                                <p className="mb-3">
+                                                    <i className="fas fa-map-marker-alt fa-3x" aria-hidden="true"></i>
+                                                </p>
                                                 <p className="lead font-abril">Desun More, 720, Eastern Metropolitan Bypass, Golpark,
-										        Sector I, Kasba, Kolkata, West Bengal 700107</p>
+										        Sector I, Kasba, Kolkata, West Bengal 700107, Near Ruby Bus Stop</p>
                                                 <div className="testimonial-footer">
                                                     <h4 className="mt-2 mb-0 hosp_Name">Desun Hospital</h4>
                                                 </div>
@@ -199,9 +207,11 @@ export default class home extends Component {
                                     <div className="carousel-item">
                                         <div className="testimonial-box text-center">
                                             <div className="testimonial-content w-100 bg-faded">
-                                                <p className="mb-0"><i className="fa fa-quote-left fa-3x" aria-hidden="true"></i></p>
+                                                <p className="mb-3">
+                                                    <i className="fas fa-map-marker-alt fa-3x" aria-hidden="true"></i>
+                                                </p>
                                                 <p className="lead font-abril"> 730, Eastern Metropolitan Bypass, Anandapur, East
-										        Kolkata Twp, Kolkata, West Bengal 700107</p>
+										        Kolkata Twp, Kolkata, West Bengal 700107, Near Ruby Bus Stop</p>
                                                 <div className="testimonial-footer">
                                                     <h4 className="mt-2 mb-0 hosp_Name">Fortis Hospital</h4>
                                                 </div>
