@@ -13,6 +13,10 @@ export default class docList extends Component {
     }
 
     componentDidMount() {
+
+        let DeptName = localStorage.getItem("DeptName");
+        let userID = localStorage.getItem("userID");
+
         axios.get("https://mocki.io/v1/1a622f1c-a8c1-486e-a527-6887c0af7c73")
             .then(response => {
                 const list = response.data;
