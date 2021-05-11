@@ -9,6 +9,7 @@ import Register from './Components/Register/register';
 import Home from './Components/HomePage/home';
 import BokkingPage from './Components/BookingFolder/Banner/Banner';
 import DeptList from './Components/BookingFolder/DeptList/DeptList';
+import DocList from './Components/BookingFolder/DocList/docList';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/banner" component={BokkingPage} />
             <Route exact path="/DeptList" component={DeptList} />
+            <Route exact path="/DocList" component={DocList} />
           </Switch>
         </div>
       </Router>

@@ -15,7 +15,7 @@
 
 .header {
     width: 960px;
-    margin: 0 auto 1rem auto;
+    margin: 0 auto 1.25rem auto;
     text-align: center;
     border-bottom: 2px solid rgba(29, 29, 29, 0.6);
     padding: 1em;
@@ -56,7 +56,7 @@
 .Dept_figure {
     background: #1d1d1d;
     display: inline-block;
-    margin: 10px;
+    margin: 25px;
     max-width: 280px;
     min-width: 230px;
     overflow: hidden;
@@ -74,7 +74,7 @@
 
 section.section-2 {
     text-align: center;
-    padding: 1.5em 1em 1.4em 1em; 
+    padding: 1.5em 1em 1.4em 1em;
     background: #1d1d1d;
     color: #efefef;
 }
@@ -135,29 +135,90 @@ section.section-2 {
     transform: translateY(50%);
 }
 
-.section-2 .Dept_figure:hover>img,
-.section-2 .Dept_figure.Dept_hover>img {
+.section-2 .Dept_figure:hover>img, .section-2 .Dept_figure.Dept_hover>img {
     opacity: 0;
 }
 
-.section-2 .Dept_figure:hover figcaption,
-.section-2 .Dept_figure.Dept_hover figcaption {
+.section-2 .Dept_figure:hover figcaption, .section-2 .Dept_figure.Dept_hover figcaption {
     background-color: #1d1d1d;
 }
 
-.section-2 .Dept_figure:hover .Dept_title,
-.section-2 .Dept_figure.Dept_hover .Dept_title {
+.section-2 .Dept_figure:hover .Dept_title, .section-2 .Dept_figure.Dept_hover .Dept_title {
     -webkit-transform: translateY(-150%);
     transform: translateY(-150%);
 }
 
-.section-2 .Dept_figure:hover .Dept_hover,
-.section-2 .Dept_figure.Dept_hover .Dept_hover {
+.section-2 .Dept_figure:hover .Dept_hover, .section-2 .Dept_figure.Dept_hover .Dept_hover {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+
 @media screen and (max-width: 992px) {
     .header {
         width: 100%;
+    }
+}
+
+/*--------------------------Navbar--------------------------*/
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.navbar-area {
+    background: rgb(15, 14, 23);
+    font-family: 'Rubik', sans-serif;
+    border-bottom: 1px solid #000;
+}
+
+.site-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.site-logo {
+    font-size: 26px;
+    font-weight: 800;
+    font-family: 'Abril Fatface', cursive;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+}
+
+.site-logo .otherHalf {
+    color: #ff8906;
+}
+
+.site-navbar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+
+.site-navbar ul li a {
+    color: #fff;
+    padding: 20px;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.site-navbar ul li a:hover {
+    background: rgba(255, 255, 255, .1);
+    color: #ff8906;
+}
+
+@media screen and (max-width: 500px) {
+    .site-navbar ul li a {
+        padding: 20px 10px;
+    }
+    .site-navbar ul li a:last-child {
+        padding-right: 0;
     }
 }

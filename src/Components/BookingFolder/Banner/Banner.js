@@ -9,35 +9,10 @@ export default class Banner extends Component {
         super(props);
         this.state = {
             hospital: "",
-            hospName: []
+            hospList: []
         };
-        this.onChange = this.onChange.bind(this);
-    }
-
-    // WinScroll() {
-    //     const sleep = ms => new Promise(res => setTimeout(res, ms));
-
-    //     (async () => {
-    //         await sleep(200);
-    //         window.scrollTo(0, 800);
-    //     })();
-    // }
-
-    onChange = e => {
-        // localStorage.setItem("hospName", e.target.value);
-        let valueSelectedByUser = e.target.value;
-        // let valueSelectedByUser = "/" + TargetValue + "DeptList";
-        this.setState({ hospital: valueSelectedByUser });
-    }
-
-    onSubmit = () => {
-        let result = this.state.hospName.map(arr => arr.hospital_name);
-        let hospID = 0;
-        for( let i=0; i<result.length; i++ ){
-            if( result[i] === this.state.hospital )
-                hospID = i
-        }
-        localStorage.setItem("hospID", this.state.hospName[hospID].id);
+        this.HospitalList = this.HospitalList.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -52,21 +27,39 @@ export default class Banner extends Component {
             }
         })
 
-        axios.get("https://jsonplaceholder.typicode.com/users")
+        axios.get("https://mocki.io/v1/d69882a8-b73e-485c-be21-dd8306471e2a")
             .then(response => {
                 this.setState(
                     {
-                        hospName: response.data
+                        hospList: response.data
                     })
             })
     }
 
+    onChange = e => {
+        let valueSelectedByUser = e.target.value;
+        this.setState({ hospital: valueSelectedByUser });
+        // console.log(this.state.hospital)
+    }
+
     HospitalList() {
-        let result = this.state.hospName.map(arr => arr.hospital_name)
+        let result = this.state.hospList.map(arr => arr.hospital_name)
         result = result.map(item => {
             return <option value={item} />
         })
         return (result);
+    }
+
+    onSubmit = () => {
+        let result = this.state.hospList.map(arr => arr.hospital_name)
+        let idList = this.state.hospList.map(arr => arr.id)
+
+        let hospID = 0;
+        for (let i = 0; i < result.length; i++) {
+            if (result[i] === this.state.hospital)
+                hospID = i
+        }
+        localStorage.setItem("hospID", idList[hospID])
     }
 
     render() {
@@ -144,18 +137,18 @@ export default class Banner extends Component {
 
                             <div className="row footer-newsletter justify-content-center">
                                 <div className="col-lg-6">
-                                    <form action={this.state.hospital}>
+                                    <form action="/DeptList">
                                         <input list="HospitalName"
                                             className="mdb-select md-form form-control"
                                             type="text"
                                             placeholder="Select your Hospital"
                                             onChange={this.onChange} />
                                         <datalist id="HospitalName">
-                                            {this.HospitalList( )}
+                                            {this.HospitalList()}
                                         </datalist>
-                                        <a href={this.state.hospital}>
-                                            <input type="submit" value="Select" 
-                                             onSubmit={this.onSubmit}/>
+                                        <a href="/DeptList">
+                                            <input type="submit" value="Select"
+                                                onSubmit={this.onSubmit} />
                                         </a>
                                     </form>
                                 </div>

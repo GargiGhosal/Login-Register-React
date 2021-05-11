@@ -6,34 +6,30 @@ export default class DeptList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Response: [],
-            DeptResponse: {}
+            Response: null,
+            hospitalName: ""
         }
+        this.DepartmentListFunc = this.DepartmentListFunc.bind(this);
     }
 
     componentDidMount() {
-        axios.get("https://jsonplaceholder.typicode.com/users")
+        // let userID = localStorage.getItem("userID");
+        // add the url like this ("https://localhost:3000/hospital/" + userID )
+
+        axios.get("https://mocki.io/v1/1a622f1c-a8c1-486e-a527-6887c0af7c73")
             .then(response => {
+                const list = response.data;
                 this.setState(
                     {
-                        Response: response.data
+                        Response: list,
+                        hospitalName: list.hospital_name
                     })
             })
-
-        let ID = parseInt(localStorage.getItem("hospID"));
-        let hospList = this.state.Response.map(arr => arr.id);
-        for (let i = 0; i < hospList.length; i++) {
-            if (hospList[i] === ID) {
-                this.setState({
-                    DeptResponse: this.state.Response[i]
-                })
-            }
-        }
     }
 
     DepartmentListFunc() {
         let deptList = [];
-        let a = this.state.DeptResponse;
+        let a = this.state.Response;
 
         a.doctors.forEach(e => e.department.map(
             e => deptList.push(e.specialization_name)
@@ -50,7 +46,9 @@ export default class DeptList extends Component {
                         <h3 className="Dept_title">{item}</h3>
                         <h3 className="Dept_hover">Select</h3>
                     </figcaption>
-                    <a href="#"></a>
+                    <a href="/DocList"
+                        onClick={() => { localStorage.setItem("DeptName", item) }}>
+                    </a>
                 </figure>
             )
         })
@@ -58,8 +56,25 @@ export default class DeptList extends Component {
     }
 
     render() {
+        if (this.state.Response === null) return null;
         return (
             <div className="DeptList">
+                <header className="header-area">
+                    <div className="navbar-area">
+                        <div className="container">
+                            <nav className="site-navbar">
+                                <div className="site-logo">
+                                    Doctors<span className="otherHalf">Verse</span>
+                                </div>
+
+                                <ul>
+                                    <li><a href="#">profile</a></li>
+                                    <li><a href="#">logout</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
                 <header className="header">
                     <h1>Department List</h1>
                     <p>The list of departments whose doctors you can book from our website</p>
@@ -67,7 +82,7 @@ export default class DeptList extends Component {
 
                 <section className="section-2">
                     <div className="Dept_heading">
-                        <h1>AMRI Hospital</h1>
+                        <h1>{this.state.hospitalName} Hospital</h1>
                     </div>
                     {this.DepartmentListFunc()}
                 </section>

@@ -1,0 +1,101 @@
+.Container {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+.responsive-table {
+    padding: 10px;
+}
+
+.responsive-table li {
+    border-radius: 3px;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.responsive-table .Header {
+    text-transform: uppercase;
+    font-size: larger;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.responsive-table .Table-Header {
+    background-color: #95A5A6;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.responsive-table .Table-Row {
+    background-color: white;
+    box-shadow: 0px 0px 9px 0px #90e0ef;
+}
+
+.responsive-table .Col-1 {
+    flex-basis: 10%;
+    color: black;
+}
+
+.responsive-table .Col-2 {
+    flex-basis: 40%;
+    color: black;
+}
+
+.responsive-table .Col-3 {
+    flex-basis: 25%;
+    color: black;
+}
+
+.responsive-table .Col-4 {
+    flex-basis: 25%;
+    color: black;
+}
+
+@media all and (max-width: 767px) {
+    .responsive-table .Table-Header {
+        display: none;
+    }
+    .responsive-table li {
+        display: block;
+    }
+    .responsive-table .Col {
+        flex-basis: 100%;
+    }
+    .responsive-table .Col {
+        display: flex;
+        padding: 10px 0;
+    }
+    .responsive-table .Col:before {
+        color: #6C7A89;
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+    }
+}
+
+.Booking-Button {
+    border: 2px solid #9dd1ff;
+    border-radius: 10px;
+    color: #348efe;
+    font-weight: 600;
+    display: inline-block;
+    padding: 15px 35px;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.Booking-Button:hover, .Booking-Button:focus {
+    background-color: #dbe7f1;
+    box-shadow: 0 0.5em 0.5em -0.4em #016ff9;
+    text-shadow: 1px 1px 1px;
+    transform: translateY(-0.25em);
+    cursor: pointer;
+}
