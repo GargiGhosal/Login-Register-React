@@ -42,16 +42,16 @@ export default class docList extends Component {
                 i++;
                 return (
                     <li className="Table-Row">
-                        <div className="Col Col-2" data-label="Customer Name">
-                            <span> {item.doc_name} </span>
+                        <div className="Col Col-2" data-label="Doctor's Name">
+                            <span className="DocName"> {item.doc_name} </span>
                             <br />
-                            <small>
-                                {item.qualification}
+                            <small className="DocNameHalf">
+                                ( {item.qualification} )
                             </small>
                         </div>
-                        <div className="Col Col-1" data-label="Job Id"></div>
-                        <div className="Col Col-3" data-label="Amount"> {item.fees} </div>
-                        <div className="Col Col-4" data-label="Payment Status">
+                        <div className="Col Col-4" data-label="Phone Number"></div>
+                        <div className="Col Col-2" data-label="Fee"> {item.fees} </div>
+                        <div className="Col Col-4" data-label="Book Appointment">
                             <a href="/form">
                                 <button className="Booking-Button" onClick={this.onChangeDoc}>
                                     Click Here
@@ -68,16 +68,32 @@ export default class docList extends Component {
     render() {
         if (this.state.Response === null) return null;
         return (
-            <div>
+            <div className="DocList_Main">
+                <header className="header-area">
+                    <div className="navbar-area">
+                        <div className="doc_container">
+                            <nav className="site-navbar">
+                                <div className="site-logo">
+                                    Doctors<span className="otherHalf">Verse</span>
+                                </div>
+
+                                <ul>
+                                    <li><a href="#">profile</a></li>
+                                    <li><a href="#">logout</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
                 <div className="Container">
                     <ul className="responsive-table">
-                        <li className="Header bg-secondary .bg-gradient text-white">
-                            <div>Dentist</div>
+                        <li className="Header .bg-gradient text-white">
+                            <div>{this.state.Department}</div>
                         </li>
                         <li className="Table-Header">
                             <div className="Col Col-2">Doctor's Name</div>
-                            <div className="Col Col-1">Phone Number</div>
-                            <div className="Col Col-3">Fee</div>
+                            <div className="Col Col-4">Phone Number</div>
+                            <div className="Col Col-2">Fee</div>
                             <div className="Col Col-4">Book Appointment</div>
                         </li>
                         {this.DocList()}

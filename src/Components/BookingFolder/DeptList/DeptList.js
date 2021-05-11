@@ -16,7 +16,8 @@ export default class DeptList extends Component {
         // let userID = localStorage.getItem("userID");
         // add the url like this ("https://localhost:3001/hospitals/" + userID )
 
-        console.log(localStorage.getItem("userID"));
+        let userID = localStorage.getItem("userID");
+        console.log(userID)
 
         axios.get("https://mocki.io/v1/1a622f1c-a8c1-486e-a527-6887c0af7c73")
             .then(response => {
@@ -63,7 +64,7 @@ export default class DeptList extends Component {
             <div className="DeptList">
                 <header className="header-area">
                     <div className="navbar-area">
-                        <div className="container">
+                        <div className="dept_container">
                             <nav className="site-navbar">
                                 <div className="site-logo">
                                     Doctors<span className="otherHalf">Verse</span>
