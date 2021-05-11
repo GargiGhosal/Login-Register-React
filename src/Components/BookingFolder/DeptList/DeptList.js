@@ -14,7 +14,9 @@ export default class DeptList extends Component {
 
     componentDidMount() {
         // let userID = localStorage.getItem("userID");
-        // add the url like this ("https://localhost:3000/hospital/" + userID )
+        // add the url like this ("https://localhost:3001/hospitals/" + userID )
+
+        console.log(localStorage.getItem("userID"));
 
         axios.get("https://mocki.io/v1/1a622f1c-a8c1-486e-a527-6887c0af7c73")
             .then(response => {

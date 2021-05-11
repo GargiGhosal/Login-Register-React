@@ -94,7 +94,7 @@
     width: 100%;
 }
 
-#footer .footer-top .footer-newsletter form input[type="submit"] {
+#footer .footer-top .footer-newsletter form .Hosp_Submit_Btn {
     position: absolute;
     width: 30%;
     top: 0;
@@ -112,7 +112,7 @@
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
-#footer .footer-top .footer-newsletter form input[type="submit"]:hover {
+#footer .footer-top .footer-newsletter form .Hosp_Submit_Btn:hover {
     background: #5ab652;
 }
 

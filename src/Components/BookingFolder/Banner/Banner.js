@@ -27,11 +27,12 @@ export default class Banner extends Component {
             }
         })
 
-        axios.get("https://mocki.io/v1/d69882a8-b73e-485c-be21-dd8306471e2a")
+        axios.get("https://mocki.io/v1/fd4afdbe-37c4-4f94-a827-6af7c746e784")
             .then(response => {
+                const list = response.data;
                 this.setState(
                     {
-                        hospList: response.data
+                        hospList: list
                     })
             })
     }
@@ -44,6 +45,7 @@ export default class Banner extends Component {
 
     HospitalList() {
         let result = this.state.hospList.map(arr => arr.hospital_name)
+        console.log(result);
         result = result.map(item => {
             return <option value={item} />
         })
@@ -53,16 +55,19 @@ export default class Banner extends Component {
     onSubmit = () => {
         let result = this.state.hospList.map(arr => arr.hospital_name)
         let idList = this.state.hospList.map(arr => arr.id)
+        // console.log(idList)
 
         let hospID = 0;
         for (let i = 0; i < result.length; i++) {
             if (result[i] === this.state.hospital)
                 hospID = i
         }
-        localStorage.setItem("hospID", idList[hospID])
+        // console.log(idList[hospID])
+        localStorage.setItem("userID", idList[hospID])
     }
 
     render() {
+        if (this.state.hospList === null) return null;
         return (
             <div>
                 <footer id="footer">
@@ -147,8 +152,7 @@ export default class Banner extends Component {
                                             {this.HospitalList()}
                                         </datalist>
                                         <a href="/DeptList">
-                                            <input type="submit" value="Select"
-                                                onSubmit={this.onSubmit} />
+                                            <button className="Hosp_Submit_Btn" onClick={this.onSubmit}>Submit</button>
                                         </a>
                                     </form>
                                 </div>

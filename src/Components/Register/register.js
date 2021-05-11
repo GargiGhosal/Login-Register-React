@@ -46,7 +46,7 @@ export default class register extends Component {
             ErrorText.innerText = "Fill out correctly!!!!!";
         }
         else {
-            axios.post("http://localhost:3000/register", reactData)
+            axios.post("http://localhost:3001/register", reactData)
                 .then(function (response) {
                     console.log(response);
                     window.location.href = "/banner";
