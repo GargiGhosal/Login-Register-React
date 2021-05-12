@@ -17,7 +17,7 @@ export default class docList extends Component {
         let DeptName = localStorage.getItem("DeptName");
         let userID = localStorage.getItem("userID");
 
-        axios.get("https://mocki.io/v1/1a622f1c-a8c1-486e-a527-6887c0af7c73")
+        axios.get("https://mocki.io/v1/49beb8dc-7460-4d5a-8ffc-f47d1ff44204")
             .then(response => {
                 const list = response.data;
                 this.setState(
@@ -49,9 +49,15 @@ export default class docList extends Component {
                                 ( {item.qualification} )
                             </small>
                         </div>
-                        <div className="Col Col-4" data-label="Phone Number"></div>
-                        <div className="Col Col-2" data-label="Fee"> {item.fees} </div>
-                        <div className="Col Col-4" data-label="Book Appointment">
+                        <div className="Col Col-2" data-label="Phone Number">{item.contact}</div>
+                        <div className="Col Col-2" data-label="Day of Week"> {item.day_of_week} </div>
+                        <div className="Col Col-2" data-label="Timings">
+                            {new Date(item.start_time).toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }).split(",")[1]}
+                            - <br />
+                            {new Date(item.end_time).toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }).split(",")[1]}
+                        </div>
+                        <div className="Col Col-1" data-label="Fee"> {item.fees} </div>
+                        <div className="Col Col-3" data-label="Book Appointment">
                             <a href="/form">
                                 <button className="Booking-Button" onClick={this.onChangeDoc}>
                                     Click Here
@@ -79,7 +85,7 @@ export default class docList extends Component {
 
                                 <ul>
                                     <li><a href="#">profile</a></li>
-                                    <li><a href="#">logout</a></li>
+                                    <li><a href="/">logout</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -92,9 +98,11 @@ export default class docList extends Component {
                         </li>
                         <li className="Table-Header">
                             <div className="Col Col-2">Doctor's Name</div>
-                            <div className="Col Col-4">Phone Number</div>
-                            <div className="Col Col-2">Fee</div>
-                            <div className="Col Col-4">Book Appointment</div>
+                            <div className="Col Col-2">Phone Number</div>
+                            <div className="Col Col-2">Day of Week</div>
+                            <div className="Col Col-2">Timings</div>
+                            <div className="Col Col-1">Fee</div>
+                            <div className="Col Col-3">Book Appointment</div>
                         </li>
                         {this.DocList()}
                     </ul>

@@ -19,7 +19,7 @@ export default class DeptList extends Component {
         let userID = localStorage.getItem("userID");
         console.log(userID)
 
-        axios.get("https://mocki.io/v1/1a622f1c-a8c1-486e-a527-6887c0af7c73")
+        axios.get("https://mocki.io/v1/49beb8dc-7460-4d5a-8ffc-f47d1ff44204")
             .then(response => {
                 const list = response.data;
                 this.setState(
