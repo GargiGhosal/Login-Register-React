@@ -10,6 +10,7 @@ import Home from './Components/HomePage/home';
 import BokkingPage from './Components/BookingFolder/Banner/Banner';
 import DeptList from './Components/BookingFolder/DeptList/DeptList';
 import DocList from './Components/BookingFolder/DocList/docList';
+import BookingForm from './Components/BookingFolder/BookingForm/bookingForm';
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
             <Route exact path="/banner" component={BokkingPage} />
             <Route exact path="/DeptList" component={DeptList} />
             <Route exact path="/DocList" component={DocList} />
+            <Route exact path="/form" component={BookingForm} />
           </Switch>
         </div>
       </Router>
