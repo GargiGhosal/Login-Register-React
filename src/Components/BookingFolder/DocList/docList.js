@@ -10,6 +10,7 @@ export default class docList extends Component {
             Department: localStorage.getItem("DeptName")
         }
         this.DocList = this.DocList.bind(this)
+        this.onChangeDoc = this.onChangeDoc.bind(this)
     }
 
     componentDidMount() {
@@ -25,6 +26,20 @@ export default class docList extends Component {
                         Response: list
                     })
             })
+    }
+
+    onChangeDoc(event) {
+        let parentElement = event.currentTarget.parentNode.parentNode.parentNode;
+
+        let timings = parentElement.childNodes[3].textContent;
+        let dayOfWeek = parentElement.childNodes[2].textContent;
+        let fees = parentElement.childNodes[4].textContent;
+        let DocName = parentElement.childNodes[0].childNodes[0].textContent;
+
+        localStorage.setItem("timings", timings);
+        localStorage.setItem("dayOfWeek", dayOfWeek);
+        localStorage.setItem("DocName", DocName);
+        localStorage.setItem("fees", fees);
     }
 
     DocList() {
@@ -50,13 +65,13 @@ export default class docList extends Component {
                             </small>
                         </div>
                         <div className="Col Col-2" data-label="Phone Number">{item.contact}</div>
-                        <div className="Col Col-2" data-label="Day of Week"> {item.day_of_week} </div>
+                        <div className="Col Col-2" data-label="Day of Week">{item.day_of_week}</div>
                         <div className="Col Col-2" data-label="Timings">
                             {new Date(item.start_time).toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }).split(",")[1]}
-                            - <br />
+                            -<br />
                             {new Date(item.end_time).toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }).split(",")[1]}
                         </div>
-                        <div className="Col Col-1" data-label="Fee"> {item.fees} </div>
+                        <div className="Col Col-1" data-label="Fee">{item.fees}</div>
                         <div className="Col Col-3" data-label="Book Appointment">
                             <a href="/form">
                                 <button className="Booking-Button" onClick={this.onChangeDoc}>

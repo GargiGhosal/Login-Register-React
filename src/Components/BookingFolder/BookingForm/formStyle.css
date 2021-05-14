@@ -58,6 +58,10 @@ body {
     font-weight: 400;
 }
 
+.right {
+    margin: 1rem 0;
+}
+
 .right .copy {
     color: black;
     text-align: center;
@@ -228,4 +232,14 @@ form .Address {
 
 .p-b-20 {
     padding-bottom: 20px;
+}
+
+.Yellow {
+    font-size: 1.15rem;
+    color: #ff8906;
+}
+
+.DateTimeSpl {
+    margin-bottom: 10px;
+    margin-left: 15px;
 }

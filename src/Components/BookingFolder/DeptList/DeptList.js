@@ -50,7 +50,10 @@ export default class DeptList extends Component {
                         <h3 className="Dept_hover">Select</h3>
                     </figcaption>
                     <a href="/DocList"
-                        onClick={() => { localStorage.setItem("DeptName", item) }}>
+                        onClick={() => {
+                            localStorage.setItem("DeptName", item);
+                            localStorage.setItem("hospName", this.state.hospitalName)
+                        }}>
                     </a>
                 </figure>
             )

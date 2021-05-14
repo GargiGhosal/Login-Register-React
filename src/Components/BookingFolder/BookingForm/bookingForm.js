@@ -2,23 +2,78 @@ import React, { Component } from 'react';
 import './formStyle.css'
 
 import DatePicker from "react-datepicker";
-import { getDay, subDays } from "date-fns";
+import { getDay, subDays, setHours, setMinutes } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 
 
 export default class bookingForm extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
-            startDate: null
+            name: "",
+            email: "",
+            gender: "",
+            age: "",
+            phoneNo: "",
+            address: "",
+            startDate: setHours(setMinutes(new Date(), 30), 16)
         }
     }
 
     isWeekday = date => {
+        let daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        let num = 0;
+        let dayVal = localStorage.getItem("dayOfWeek");
+        for (let i = 0; i < 7; i++) {
+            if (daysArr[i].toLowerCase() === dayVal.toLowerCase()) {
+                num = i
+            }
+        }
         const day = getDay(date);
-        return day !== 0 && day !== 6;
+        return day === num
+        // return day !== 0 && day !== 6;
     }
+
+    onNameChange = (event) => {
+        this.setState({ name: event.target.value });
+    }
+    onAgeChange = (event) => {
+        this.setState({ age: event.target.value });
+    }
+    onEmailChange = (event) => {
+        this.setState({ email: event.target.value });
+    }
+    onPhoneChange = (event) => {
+        this.setState({ phoneNo: event.target.value });
+    }
+    onAddressChange = (event) => {
+        this.setState({ address: event.target.value });
+    }
+    onGenderChange = (event) => {
+        this.setState({ gender: event.target.value })
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        const formData = {
+            name: this.state.name,
+            age: this.state.age,
+            email: this.state.email,
+            phoneNo: this.state.phoneNo,
+            address: this.state.address,
+            gender: this.state.gender,
+
+            hospName: localStorage.getItem("hospName"),
+            deptName: localStorage.getItem("DeptName"),
+            docName: localStorage.getItem("DocName"),
+            fees: localStorage.getItem("fees"),
+            timings: localStorage.getItem("timings"),
+            dateSelected: this.state.startDate
+        }
+        console.log(this.state.startDate)
+        console.log(formData)
+    }
+
 
     render() {
         return (
@@ -40,8 +95,10 @@ export default class bookingForm extends Component {
                                         </span>
 
                                         <span className="txt3">
-                                            <span style={{ marginRight: "0.25rem" }}>Amri Hospital,</span>
-                                            <span>Cardiology</span>
+                                            <span style={{ marginRight: "0.25rem" }}>
+                                                {localStorage.getItem("hospName")},
+                                            </span>
+                                            <span>{localStorage.getItem("DeptName")}</span>
                                         </span>
                                     </div>
                                 </div>
@@ -57,7 +114,7 @@ export default class bookingForm extends Component {
                                         </span>
 
                                         <span className="txt3">
-                                            Baburao Ganpatrao Apte
+                                            {localStorage.getItem("DocName")}
                                         </span>
                                     </div>
                                 </div>
@@ -72,7 +129,7 @@ export default class bookingForm extends Component {
                                         </span>
 
                                         <span className="txt2">
-                                            500
+                                            {localStorage.getItem("fees")}
                                         </span>
                                     </div>
                                 </div>
@@ -88,18 +145,35 @@ export default class bookingForm extends Component {
 
                                         <span className="txt3">
                                             <span style={{ marginRight: "10px", color: "white" }}>
-                                                Timings
+                                                <span className="Yellow">
+                                                    Timings -
+                                                </span>
+                                                <div className="DateTimeSpl">{localStorage.getItem("timings")}</div>
                                             </span>
-                                            <DatePicker
-                                                className="Date"
-                                                selected={this.state.startDate}
-                                                onChange={date => this.setState({
-                                                    startDate: date
-                                                })}
-                                                minDate={subDays(new Date(), 0)}
-                                                filterDate={this.isWeekday}
-                                                placeholderText="Select a weekday"
-                                            />
+                                            <span>
+                                                <span className="Yellow">
+                                                    {"Select a " + localStorage.getItem("dayOfWeek")}
+                                                </span> -
+                                                <div className="DateTimeSpl">
+                                                    <DatePicker
+                                                        className="Date"
+                                                        selected={this.state.startDate}
+                                                        onChange={date => this.setState({
+                                                            startDate: date
+                                                        })}
+                                                        minDate={subDays(new Date(), 0)}
+                                                        filterDate={this.isWeekday}
+                                                        timeFormat="HH:mm"
+                                                        // injectTimes={[
+                                                        //     setHours(setMinutes(new Date(), 1), 0),
+                                                        //     setHours(setMinutes(new Date(), 5), 0),
+                                                        //     setHours(setMinutes(new Date(), 59), 0)
+                                                        // ]}
+                                                        dateFormat="MMMM d, yyyy"
+                                                        placeholderText={"Select a " + localStorage.getItem("dayOfWeek")}
+                                                    />
+                                                </div>
+                                            </span>
                                         </span>
                                     </div>
                                 </div>
@@ -112,36 +186,53 @@ export default class bookingForm extends Component {
                                 <h2 className="Booking_Heading">User Information</h2>
                             </section>
                             <div className="input_container name">
-                                <label className="Booking_Label" for="fname">Full Name</label>
-                                <input type="text" id="fname" name="fname" className="Name" />
+                                <label className="Booking_Label" htmlFor="fname">Full Name</label>
+                                <input type="text" id="fname" name="fname" className="Name"
+                                    value={this.state.name} onChange={this.onNameChange}
+                                    required />
                             </div>
                             <div className="input_container age">
-                                <label className="Booking_Label" for="age">Age</label>
-                                <input type="text" id="age" name="age" className="Age" />
+                                <label className="Booking_Label" htmlFor="age">Age</label>
+                                <input type="text" id="age" name="age" className="Age"
+                                    value={this.state.age} onChange={this.onAgeChange}
+                                    required />
                             </div>
                             <div className="input_container age">
-                                <label className="Booking_Label" for="gender">Gender</label>
-                                <select id="gender" className="Gender">
+                                <label className="Booking_Label" htmlFor="gender">Gender</label>
+                                <select id="gender" className="Gender" onClick={this.onGenderChange} required>
                                     <option selected disabled hidden>Select Your Gender</option>
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                    <option>Others</option>
+                                    <option value="Male">
+                                        Male
+                                    </option>
+                                    <option value="Female">
+                                        Female
+                                    </option>
+                                    <option value="Others">
+                                        Others
+                                    </option>
                                 </select>
                             </div>
                             <div className="input_container phoneNo">
-                                <label className="Booking_Label" for="phoneNo">Phone Number</label>
-                                <input type="text" id="phoneNo" name="phoneNo" className="PhoneNo" />
+                                <label className="Booking_Label" htmlFor="phoneNo">Phone Number</label>
+                                <input type="text" id="phoneNo" name="phoneNo" className="PhoneNo"
+                                    value={this.state.phoneNo} onChange={this.onPhoneChange}
+                                    required />
                             </div>
                             <div className="input_container email">
-                                <label className="Booking_Label" for="email">Email</label>
-                                <input type="email" id="email" name="email" className="Email" />
+                                <label className="Booking_Label" htmlFor="email">Email</label>
+                                <input type="email" id="email" name="email" className="Email"
+                                    value={this.state.email} onChange={this.onEmailChange}
+                                    required />
                             </div>
                             <div className="input_container address">
-                                <label className="Booking_Label" for="address">Address</label>
-                                <textarea type="text" id="address" name="address" className="Address"></textarea>
+                                <label className="Booking_Label" htmlFor="address">Address</label>
+                                <textarea type="text" id="address" name="address" className="Address"
+                                    value={this.state.address} onChange={this.onAddressChange}
+                                    required>
+                                </textarea>
                             </div>
 
-                            <button type="submit" className="signup_btn">Book Now</button>
+                            <button type="submit" className="signup_btn" onClick={this.handleSubmit}>Book Now</button>
                         </form>
                     </div>
                 </div>
