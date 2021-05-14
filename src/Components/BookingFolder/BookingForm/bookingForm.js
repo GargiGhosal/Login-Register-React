@@ -6,6 +6,7 @@ import { getDay, subDays, setHours, setMinutes } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 
 import moment from 'moment'
+import axios from 'axios';
 
 export default class bookingForm extends Component {
     constructor(props) {
@@ -65,6 +66,8 @@ export default class bookingForm extends Component {
         let val = this.state.startDate;
         val = moment(val).format("YYYY-MM-DD HH:mm:ss")
 
+        let ErrorText = document.querySelector(".Error_Handling")
+
         const formData = {
             name: this.state.name,
             age: this.state.age,
@@ -80,7 +83,31 @@ export default class bookingForm extends Component {
             timings: localStorage.getItem("timings"),
             dateSelected: val
         }
-        console.log(formData)
+
+        if (formData.name === "" || formData.age === "" ||
+            formData.email === "" || formData.phoneNo === "" ||
+            formData.address === "" || formData.gender === "") {
+            this.setState({
+                name: "",
+                age: "",
+                email: "",
+                phoneNo: "",
+                address: "",
+                gender: ""
+            })
+            ErrorText.innerHTML = "Fill Out Correctly!!!!"
+        }
+        else {
+            axios.post("/t/wzuo7-1621027497/post", formData)
+                .then(function (response) {
+                    console.log(response);
+                    // window.location.href = "/";
+                })
+                .catch(function (error) {
+                    console.log(error.response.data);
+                })
+        }
+
     }
 
     render() {
@@ -156,7 +183,9 @@ export default class bookingForm extends Component {
                                                 <span className="Yellow">
                                                     Timings -
                                                 </span>
-                                                <div className="DateTimeSpl">{localStorage.getItem("timings")}</div>
+                                                <div className="DateTimeSpl">
+                                                    {localStorage.getItem("timings")}
+                                                </div>
                                             </span>
                                             <span>
                                                 <span className="Yellow">
@@ -165,7 +194,8 @@ export default class bookingForm extends Component {
                                                 <div className="DateTimeSpl">
                                                     <DatePicker
                                                         className="Date"
-                                                        selected={this.state.startDate}
+                                                        selected={this.state.startDate ?
+                                                            new Date(this.state.startDate) : null}
                                                         onChange={date => this.setState({
                                                             startDate: date
                                                         })}
@@ -173,7 +203,6 @@ export default class bookingForm extends Component {
                                                         filterDate={this.isWeekday}
                                                         timeFormat="HH:mm"
                                                         dateFormat="yyyy-mm-dd"
-                                                        placeholderText={"Select a " + localStorage.getItem("dayOfWeek")}
                                                     />
                                                 </div>
                                             </span>
@@ -184,7 +213,7 @@ export default class bookingForm extends Component {
                         </section>
                     </div>
                     <div className="right">
-                        <form action="#">
+                        <form action="#" method="post">
                             <section className="copy">
                                 <h2 className="Booking_Heading">User Information</h2>
                             </section>
@@ -202,8 +231,9 @@ export default class bookingForm extends Component {
                             </div>
                             <div className="input_container age">
                                 <label className="Booking_Label" htmlFor="gender">Gender</label>
-                                <select id="gender" className="Gender" onClick={this.onGenderChange} required>
-                                    <option selected disabled hidden>Select Your Gender</option>
+                                <select id="gender" className="Gender" onClick={this.onGenderChange}
+                                    defaultValue={'DEFAULT'} required>
+                                    <option value="DEFAULT" disabled>Select Your Gender</option>
                                     <option value="Male">
                                         Male
                                     </option>
@@ -234,8 +264,11 @@ export default class bookingForm extends Component {
                                     required>
                                 </textarea>
                             </div>
-
-                            <button type="submit" className="signup_btn" onClick={this.handleSubmit}>Book Now</button>
+                            <div className="Error_Handling">
+                            </div>
+                            <button type="submit" className="signup_btn" onClick={this.handleSubmit}>
+                                Book Now
+                            </button>
                         </form>
                     </div>
                 </div>

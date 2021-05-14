@@ -141,6 +141,14 @@ form .Address {
     cursor: pointer;
 }
 
+.Error_Handling {
+    margin-bottom: 5px;
+    color: red;
+    font-size: 1.15rem;
+    font-weight: 600;
+    font-family: Poppins-Regular;
+}
+
 @media screen and (min-width: 900px) {
     .split_screen {
         flex-direction: row;
