@@ -70,10 +70,8 @@ export default class bookingForm extends Component {
             timings: localStorage.getItem("timings"),
             dateSelected: this.state.startDate
         }
-        console.log(this.state.startDate)
         console.log(formData)
     }
-
 
     render() {
         return (
