@@ -63,7 +63,7 @@ export default class Banner extends Component {
                 hospID = i
         }
         // console.log(idList[hospID])
-        localStorage.setItem("userID", idList[hospID])
+        localStorage.setItem("hospID", idList[hospID])
     }
 
     render() {

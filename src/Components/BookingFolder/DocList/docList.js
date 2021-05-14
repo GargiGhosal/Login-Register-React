@@ -16,7 +16,7 @@ export default class docList extends Component {
     componentDidMount() {
 
         let DeptName = localStorage.getItem("DeptName");
-        let userID = localStorage.getItem("userID");
+        let hospID = localStorage.getItem("hospID");
 
         axios.get("https://mocki.io/v1/49beb8dc-7460-4d5a-8ffc-f47d1ff44204")
             .then(response => {
@@ -31,15 +31,17 @@ export default class docList extends Component {
     onChangeDoc(event) {
         let parentElement = event.currentTarget.parentNode.parentNode.parentNode;
 
-        let timings = parentElement.childNodes[3].textContent;
-        let dayOfWeek = parentElement.childNodes[2].textContent;
-        let fees = parentElement.childNodes[4].textContent;
-        let DocName = parentElement.childNodes[0].childNodes[0].textContent;
+        let timings = parentElement.childNodes[3].textContent.trim();
+        let dayOfWeek = parentElement.childNodes[2].textContent.trim();
+        let fees = parentElement.childNodes[4].textContent.trim();
+        let DocName = parentElement.childNodes[0].childNodes[0].textContent.trim();
+        let startTime = parentElement.childNodes[3].childNodes[0].textContent.trim();
 
         localStorage.setItem("timings", timings);
         localStorage.setItem("dayOfWeek", dayOfWeek);
         localStorage.setItem("DocName", DocName);
         localStorage.setItem("fees", fees);
+        localStorage.setItem("startTime", startTime)
     }
 
     DocList() {
@@ -67,9 +69,9 @@ export default class docList extends Component {
                         <div className="Col Col-2" data-label="Phone Number">{item.contact}</div>
                         <div className="Col Col-2" data-label="Day of Week">{item.day_of_week}</div>
                         <div className="Col Col-2" data-label="Timings">
-                            {new Date(item.start_time).toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }).split(",")[1]}
+                            <span>{new Date(item.start_time).toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }).split(",")[1]}</span>
                             -<br />
-                            {new Date(item.end_time).toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }).split(",")[1]}
+                            <span>{new Date(item.end_time).toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }).split(",")[1]}</span>
                         </div>
                         <div className="Col Col-1" data-label="Fee">{item.fees}</div>
                         <div className="Col Col-3" data-label="Book Appointment">

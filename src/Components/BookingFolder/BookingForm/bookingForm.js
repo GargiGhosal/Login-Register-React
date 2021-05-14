@@ -5,10 +5,16 @@ import DatePicker from "react-datepicker";
 import { getDay, subDays, setHours, setMinutes } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 
+import moment from 'moment'
 
 export default class bookingForm extends Component {
     constructor(props) {
         super(props);
+
+        let T = localStorage.getItem("startTime");
+        let hr = T.substring(0, 2)
+        let min = T.substring(3, 5)
+
         this.state = {
             name: "",
             email: "",
@@ -16,7 +22,7 @@ export default class bookingForm extends Component {
             age: "",
             phoneNo: "",
             address: "",
-            startDate: setHours(setMinutes(new Date(), 30), 16)
+            startDate: setHours(setMinutes(new Date(), min), hr)
         }
     }
 
@@ -55,6 +61,10 @@ export default class bookingForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
+
+        let val = this.state.startDate;
+        val = moment(val).format("YYYY-MM-DD HH:mm:ss")
+
         const formData = {
             name: this.state.name,
             age: this.state.age,
@@ -68,7 +78,7 @@ export default class bookingForm extends Component {
             docName: localStorage.getItem("DocName"),
             fees: localStorage.getItem("fees"),
             timings: localStorage.getItem("timings"),
-            dateSelected: this.state.startDate
+            dateSelected: val
         }
         console.log(formData)
     }
@@ -162,12 +172,7 @@ export default class bookingForm extends Component {
                                                         minDate={subDays(new Date(), 0)}
                                                         filterDate={this.isWeekday}
                                                         timeFormat="HH:mm"
-                                                        // injectTimes={[
-                                                        //     setHours(setMinutes(new Date(), 1), 0),
-                                                        //     setHours(setMinutes(new Date(), 5), 0),
-                                                        //     setHours(setMinutes(new Date(), 59), 0)
-                                                        // ]}
-                                                        dateFormat="MMMM d, yyyy"
+                                                        dateFormat="yyyy-mm-dd"
                                                         placeholderText={"Select a " + localStorage.getItem("dayOfWeek")}
                                                     />
                                                 </div>
