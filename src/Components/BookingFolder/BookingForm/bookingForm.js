@@ -194,15 +194,15 @@ export default class bookingForm extends Component {
                                                 <div className="DateTimeSpl">
                                                     <DatePicker
                                                         className="Date"
-                                                        selected={this.state.startDate ?
-                                                            new Date(this.state.startDate) : null}
+                                                        selected={Date.parse(moment(this.state.startDate, 'MM/DD/YYYY').toISOString())}
+                                                        // selected={moment(this.state.startDate).toDate()}
                                                         onChange={date => this.setState({
                                                             startDate: date
                                                         })}
                                                         minDate={subDays(new Date(), 0)}
                                                         filterDate={this.isWeekday}
                                                         timeFormat="HH:mm"
-                                                        dateFormat="yyyy-mm-dd"
+                                                        dateFormat="MMMM d, yyyy"
                                                     />
                                                 </div>
                                             </span>
