@@ -16,6 +16,8 @@ export default class bookingForm extends Component {
         let hr = T.substring(0, 2)
         let min = T.substring(3, 5)
 
+        // let docID = localStorage.getItem("docID")
+
         this.state = {
             name: "",
             email: "",
@@ -79,10 +81,13 @@ export default class bookingForm extends Component {
             hospName: localStorage.getItem("hospName"),
             deptName: localStorage.getItem("DeptName"),
             docName: localStorage.getItem("DocName"),
+            hospID: localStorage.getItem("hospID"),
+            docID: localStorage.getItem("docID"),
             fees: localStorage.getItem("fees"),
             timings: localStorage.getItem("timings"),
             dateSelected: val
         }
+        console.log(formData)
 
         if (formData.name === "" || formData.age === "" ||
             formData.email === "" || formData.phoneNo === "" ||
@@ -101,7 +106,7 @@ export default class bookingForm extends Component {
             axios.post("/t/wzuo7-1621027497/post", formData)
                 .then(function (response) {
                     console.log(response);
-                    // window.location.href = "/";
+                    window.location.href = "/";
                 })
                 .catch(function (error) {
                     console.log(error.response.data);

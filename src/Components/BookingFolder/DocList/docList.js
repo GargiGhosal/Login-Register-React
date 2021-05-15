@@ -7,6 +7,7 @@ export default class docList extends Component {
         super(props);
         this.state = {
             Response: null,
+            docID: null,
             Department: localStorage.getItem("DeptName")
         }
         this.DocList = this.DocList.bind(this)
@@ -28,7 +29,8 @@ export default class docList extends Component {
             })
     }
 
-    onChangeDoc(event) {
+    onChangeDoc(event, val) {
+
         let parentElement = event.currentTarget.parentNode.parentNode.parentNode;
 
         let timings = parentElement.childNodes[3].textContent.trim();
@@ -37,11 +39,15 @@ export default class docList extends Component {
         let DocName = parentElement.childNodes[0].childNodes[0].textContent.trim();
         let startTime = parentElement.childNodes[3].childNodes[0].textContent.trim();
 
+        let newVal = val;
+
         localStorage.setItem("timings", timings);
         localStorage.setItem("dayOfWeek", dayOfWeek);
         localStorage.setItem("DocName", DocName);
         localStorage.setItem("fees", fees);
-        localStorage.setItem("startTime", startTime)
+        localStorage.setItem("startTime", startTime);
+        localStorage.setItem("docID", newVal);
+
     }
 
     DocList() {
@@ -76,12 +82,14 @@ export default class docList extends Component {
                         <div className="Col Col-1" data-label="Fee">{item.fees}</div>
                         <div className="Col Col-3" data-label="Book Appointment">
                             <a href="/form">
-                                <button className="Booking-Button" onClick={this.onChangeDoc}>
+                                <button className="Booking-Button" onClick={(event) => {
+                                    this.onChangeDoc(event, item.hospitaldoctor_id)
+                                }} >
                                     Click Here
                                 </button>
                             </a>
                         </div>
-                    </li>
+                    </li >
                 )
             }
         })
