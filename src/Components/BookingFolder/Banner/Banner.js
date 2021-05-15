@@ -27,7 +27,7 @@ export default class Banner extends Component {
             }
         })
 
-        axios.get("https://mocki.io/v1/fd4afdbe-37c4-4f94-a827-6af7c746e784")
+        axios.get("http://localhost:3001/hospitals")
             .then(response => {
                 const list = response.data;
                 this.setState(

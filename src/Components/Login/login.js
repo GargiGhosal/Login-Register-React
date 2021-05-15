@@ -43,6 +43,7 @@ export default class login extends Component {
             axios.post("http://localhost:3001/login", reactData)
                 .then(function (response) {
                     console.log(response);
+                    localStorage.setItem("UserID",response.data.id)
                     window.location.href = "/banner";
                 })
                 .catch(function (error) {

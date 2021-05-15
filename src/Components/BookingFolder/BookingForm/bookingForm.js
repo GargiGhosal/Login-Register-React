@@ -85,6 +85,7 @@ export default class bookingForm extends Component {
             docID: localStorage.getItem("docID"),
             fees: localStorage.getItem("fees"),
             timings: localStorage.getItem("timings"),
+            userId: localStorage.getItem("UserID"),
             dateSelected: val
         }
         console.log(formData)
@@ -103,7 +104,7 @@ export default class bookingForm extends Component {
             ErrorText.innerHTML = "Fill Out Correctly!!!!"
         }
         else {
-            axios.post("/t/wzuo7-1621027497/post", formData)
+            axios.post("http://localhost:3001/bookings", formData)
                 .then(function (response) {
                     console.log(response);
                     window.location.href = "/";
@@ -251,7 +252,7 @@ export default class bookingForm extends Component {
                                 </select>
                             </div>
                             <div className="input_container phoneNo">
-                                <label className="Booking_Label" htmlFor="phoneNo">Phone Number</label>
+                                <label className="Booking_Label" htmlFor="phoneNo">PhoneNumber</label>
                                 <input type="text" id="phoneNo" name="phoneNo" className="PhoneNo"
                                     value={this.state.phoneNo} onChange={this.onPhoneChange}
                                     required />

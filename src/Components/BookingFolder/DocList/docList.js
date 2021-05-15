@@ -19,7 +19,7 @@ export default class docList extends Component {
         let DeptName = localStorage.getItem("DeptName");
         let hospID = localStorage.getItem("hospID");
 
-        axios.get("https://mocki.io/v1/49beb8dc-7460-4d5a-8ffc-f47d1ff44204")
+        axios.get("http://localhost:3001/hospitals/" + hospID)
             .then(response => {
                 const list = response.data;
                 this.setState(
